@@ -4,6 +4,35 @@
   
   
   <entry>
+    <title>Leetcode-Array</title>
+    <link href="/2020/05/15/array/"/>
+    <url>/2020/05/15/array/</url>
+    
+    <content type="html"><![CDATA[<h1 id="Leetcode-Array"><a href="#Leetcode-Array" class="headerlink" title="Leetcode-Array"></a>Leetcode-Array</h1><h2 id="1-两数之和"><a href="#1-两数之和" class="headerlink" title="1.两数之和"></a>1.两数之和</h2><blockquote><p>题目描述：<br>给定一个整数数组 nums 和一个目标值 target，请你在该数组中找出和为目标值的那 两个整数，并返回他们的数组下标。<br>示例：<br>给定 nums = [2, 7, 11, 15], target = 9<br>因为 nums[0] + nums[1] = 2 + 7 = 9，所以返回 [0, 1]。</p></blockquote><ul><li>暴力法&ensp;&ensp;（两层循环遍历就行，不贴代码了,时间复杂度O(n^2）,空间复杂度O(1))</li><li>Hash表法&ensp;&ensp;在进行迭代并将元素插入到表中的同时，我们还会回过头来检查表中是否已经存在当前元素所对应的目标元素。如果它存在，那我们已经找到了对应解，并立即将其返回。时间复杂度O(n),只遍历了一次数组,且每个元素只花费了O(1)的时间;空间复杂度O(n), hash表最多N个元素<pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span>[] twoSum(<span class="hljs-keyword">int</span>[] nums, <span class="hljs-keyword">int</span> target) &#123;       <span class="hljs-keyword">if</span>(nums.length==<span class="hljs-number">0</span>||nums==<span class="hljs-keyword">null</span>)&#123;           <span class="hljs-keyword">return</span> <span class="hljs-keyword">null</span>;       &#125;       <span class="hljs-keyword">int</span>[] ans=<span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[<span class="hljs-number">2</span>];       Map&lt;Integer,Integer&gt; map=<span class="hljs-keyword">new</span> HashMap&lt;&gt;();       <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;nums.length;i++)&#123;           <span class="hljs-keyword">int</span> cur=nums[i];           <span class="hljs-keyword">int</span> another=target-cur;           <span class="hljs-keyword">if</span>(map.containsKey(cur))&#123;               ans[<span class="hljs-number">0</span>]=map.get(cur);               ans[<span class="hljs-number">1</span>]=i;               <span class="hljs-keyword">break</span>;           &#125;<span class="hljs-keyword">else</span>&#123;               map.put(another,i);           &#125;       &#125;       <span class="hljs-keyword">return</span> ans;   &#125;</code></pre><h2 id="2-总持续时间可被60整除的歌曲"><a href="#2-总持续时间可被60整除的歌曲" class="headerlink" title="2.总持续时间可被60整除的歌曲"></a>2.总持续时间可被60整除的歌曲</h2><blockquote><p>题目描述：<br>在歌曲列表中，第 i 首歌曲的持续时间为 time[i] 秒。返回其总持续时间（以秒为单位）可被 60 整除的歌曲对的数量。形式上，我们希望索引的数字 i 和 j 满足  i &lt; j 且有 (time[i] + time[j]) % 60 == 0。<br>示例：<br>输入：[30,20,150,100,40]<br>输出：3<br>解释：这三对的总持续时间可被 60 整数：<br>(time[0] = 30, time[2] = 150): 总持续时间 180<br>(time[1] = 20, time[3] = 100): 总持续时间 120<br>(time[1] = 20, time[4] = 40): 总持续时间 60</p></blockquote></li></ul><p>乍一看题目描述似乎和第一题不咋一样，但是其实实质是一样的，都是求数组中和为目标值的两个数，只不过这道题稍微花里胡哨了一点，把它虚伪的外衣给扒掉，就能看到它光秃秃的内在。首先，总持续时间可以被60整除，那么数组中所有元素取的时候都模60，不就是求两数之和为60，求总共和为60的对数，那么每次匹配到就+1就行。</p><ul><li>hash表法<pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">numPairsDivisibleBy60</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] time)</span></span>&#123;       HashMap&lt;Integer,Integer&gt; map=<span class="hljs-keyword">new</span> HashMap&lt;&gt;();       <span class="hljs-keyword">int</span> ans=<span class="hljs-number">0</span>;       <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;time.length;i++)&#123;           <span class="hljs-keyword">int</span> cur=time[i]%<span class="hljs-number">60</span>;           <span class="hljs-keyword">if</span>(map.containsKey(cur)) &#123;               ans+=map.get(cur);           &#125;           <span class="hljs-keyword">if</span>(cur==<span class="hljs-number">0</span>) &#123;               map.put(cur,map.getOrDefault(cur,<span class="hljs-number">0</span>)+<span class="hljs-number">1</span>);           &#125;           <span class="hljs-keyword">else</span> &#123;               <span class="hljs-keyword">int</span> another=<span class="hljs-number">60</span>-cur;               map.put(another,map.getOrDefault(another,<span class="hljs-number">0</span>)+<span class="hljs-number">1</span>);           &#125;       &#125;       <span class="hljs-keyword">return</span> ans;   &#125;</code></pre></li><li>数组hash: 由于每首歌的持续时间不可能为负数，也就是数组元素非负，那么就可以用数组来代替hashmap，数组的查询效率高于hashmap，典型的用空间换时间。<pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">numPairsDivisibleBy60</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] time)</span></span>&#123;       <span class="hljs-keyword">int</span> ans=<span class="hljs-number">0</span>;       <span class="hljs-keyword">int</span>[] map=<span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[<span class="hljs-number">60</span>];       <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> val:time)&#123;           <span class="hljs-keyword">int</span> cur=val%<span class="hljs-number">60</span>;           ans+=map[cur];           <span class="hljs-keyword">int</span> another=cur==<span class="hljs-number">0</span>?<span class="hljs-number">0</span>:<span class="hljs-number">60</span>-cur;           map[another]++;       &#125;       <span class="hljs-keyword">return</span> ans;   &#125;</code></pre></li></ul>]]></content>
+    
+    
+    <categories>
+      
+      <category>Leetcode</category>
+      
+      <category>Array</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Leetcode</tag>
+      
+      <tag>Array</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>hexo个人博客的搭建</title>
     <link href="/2020/05/13/hexo/"/>
     <url>/2020/05/13/hexo/</url>
