@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  <title>JavaGuide学习笔记 - Hexo</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+<link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_fmb4a04yx8h.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_pjno9b9zyxs.css">
+
+
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>BryantX</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/">
+              <i class="iconfont icon-home-fill"></i>
+              Home</a>
+          </li>
+        
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/archives/">
+              <i class="iconfont icon-archive-fill"></i>
+              Archives</a>
+          </li>
+        
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/categories/">
+              <i class="iconfont icon-category-fill"></i>
+              Categories</a>
+          </li>
+        
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/tags/">
+              <i class="iconfont icon-tags-fill"></i>
+              Tags</a>
+          </li>
+        
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/about/">
+              <i class="iconfont icon-user-fill"></i>
+              About</a>
+          </li>
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="view intro-2" id="background" parallax=true
+         style="background: url('/img/kobe.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              
+                <div class="mt-3 post-meta">
+                  <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+                  <time datetime="2020-05-27 10:17">
+                    May 27, 2020 am
+                  </time>
+                </div>
+              
+
+              <div class="mt-1">
+                
+                  
+                  <span class="post-meta mr-2">
+                    <i class="iconfont icon-chart"></i>
+                    2.1k 字
+                  </span>
+                
+
+                
+                  
+                  <span class="post-meta mr-2">
+                      <i class="iconfont icon-clock-fill"></i>
+                    
+                    
+                    24
+                     分钟
+                  </span>
+                
+
+                
+              </div>
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <div class="post-content mx-auto" id="post">
+            
+            <article class="markdown-body">
+              <h1 id="JavaGuide学习笔记"><a href="#JavaGuide学习笔记" class="headerlink" title="JavaGuide学习笔记"></a>JavaGuide学习笔记</h1><p><a href="https://github.com/Snailclimb/JavaGuide" target="_blank" rel="noopener">JavaGuide github地址</a></p>
+<h2 id="一-基础"><a href="#一-基础" class="headerlink" title="一.基础"></a>一.基础</h2><h3 id="1-JVM-JRE-JDK的区别"><a href="#1-JVM-JRE-JDK的区别" class="headerlink" title="1.JVM,JRE,JDK的区别"></a>1.JVM,JRE,JDK的区别</h3><p>Java 程序从源代码到运行一般有下面 3 步：<br><img src="https://camo.githubusercontent.com/8f6eceddf64b5948c69a398d1a0e777c9c7f8e5b/68747470733a2f2f6d792d626c6f672d746f2d7573652e6f73732d636e2d6265696a696e672e616c6979756e63732e636f6d2f4a6176612532302545372541382538422545352542412538462545382542462539302545382541312538432545382542462538372545372541382538422e706e67" srcset="/img/loading.gif" alt=""><br>我们需要格外注意的是 .class-&gt;机器码 这一步。在这一步 JVM 类加载器首先加载字节码文件，然后通过解释器逐行解释执行，这种方式的执行速度会相对比较慢。而且，有些方法和代码块是经常需要被调用的(也就是所谓的热点代码)，所以后面引进了 JIT (just in time )编译器，而 JIT 属于运行时编译。当 JIT 编译器完成第一次编译后，其会将字节码对应的机器码保存下来，下次可以直接使用。而我们知道，机器码的运行效率肯定是高于 Java 解释器的。这也解释了我们为什么经常会说 Java 是编译与解释共存的语言。</p>
+<p>Jvm：运行 Java 字节码的虚拟机。JVM 有针对不同系统的特定实现（Windows，Linux，macOS），目的是使用相同的字节码，它们都会给出相同的结果。字节码和不同系统的 JVM 实现是 Java 语言“一次编译，随处可以运行”的关键所在。</p>
+<p>Jre:是 Java 运行时环境。它是运行已编译 Java 程序所需的所有内容的集合，包括 Java 虚拟机（JVM），Java 类库，java 命令和其他的一些基础构件。但是，它不能用于创建新程序。</p>
+<p>JDK 是 Java Development Kit，它是功能齐全的 Java SDK。它拥有 JRE 所拥有的一切，还有编译器（javac）和工具（如 javadoc 和 jdb）。它能够创建和编译程序。</p>
+<h3 id="2-泛型的类型擦除"><a href="#2-泛型的类型擦除" class="headerlink" title="2.泛型的类型擦除"></a>2.泛型的类型擦除</h3><p>Java 泛型（generics）是 JDK 5 中引入的一个新特性, 泛型提供了编译时类型安全检测机制，该机制允许程序员在编译时检测到非法的类型。泛型的本质是参数化类型，也就是说所操作的数据类型被指定为一个参数。Java的泛型是伪泛型，这是因为Java在编译期间，所有的泛型信息都会被擦掉，这也就是通常所说类型擦除 。</p>
+<pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Test</span> </span>&#123;
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;
+
+        ArrayList&lt;String&gt; list1 = <span class="hljs-keyword">new</span> ArrayList&lt;String&gt;();
+        list1.add(<span class="hljs-string">"abc"</span>);
+
+        ArrayList&lt;Integer&gt; list2 = <span class="hljs-keyword">new</span> ArrayList&lt;Integer&gt;();
+        list2.add(<span class="hljs-number">123</span>);
+
+        System.out.println(list1.getClass() == list2.getClass());
+    &#125;
+
+&#125;</code></pre>
+<p>在这个例子中，我们定义了两个ArrayList数组，不过一个是ArrayList<String>泛型类型的，只能存储字符串；一个是ArrayList<Integer>泛型类型的，只能存储整数，最后，我们通过list1对象和list2对象的getClass()方法获取他们的类的信息，最后发现结果为true。说明泛型类型String和Integer都被擦除掉了，只剩下原始类型。</p>
+<pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Test</span> </span>&#123;
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> Exception </span>&#123;
+
+        ArrayList&lt;Integer&gt; list = <span class="hljs-keyword">new</span> ArrayList&lt;Integer&gt;();
+
+        list.add(<span class="hljs-number">1</span>);  <span class="hljs-comment">//这样调用 add 方法只能存储整形，因为泛型类型的实例为 Integer</span>
+
+        list.getClass().getMethod("add", Object.class).invoke(list, "asd");
+
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; list.size(); i++) &#123;
+            System.out.println(list.get(i));
+        &#125;
+    &#125;
+
+&#125;</code></pre>
+<p>在程序中定义了一个ArrayList泛型类型实例化为Integer对象，如果直接调用add()方法，那么只能存储整数数据，不过当我们利用反射调用add()方法的时候，却可以存储字符串，这说明了Integer泛型实例在编译之后被擦除掉了，只保留了原始类型。</p>
+<h3 id="3-hashcode-和equals"><a href="#3-hashcode-和equals" class="headerlink" title="3.hashcode()和equals()"></a>3.hashcode()和equals()</h3><p>hashCode() 的作用是获取哈希码，也称为散列码；它实际上是返回一个 int 整数。这个哈希码的作用是确定该对象在哈希表中的索引位置。</p>
+<p>equals()的作用是判断两个对象是否相等，如果是基本数据类型，equals()等价于==；如果是引用数据类型，没有重写的话等价于==，也就是判断两个对象是否是同一个，重写了的话一般都是比较内容是否相同。</p>
+<p>equals() 方法和 hashcode() 方法间的关系是这样的：</p>
+<ul>
+<li><p>如果两个对象相同（即：用 equals 比较返回true），那么它们的 hashCode 值一定要相同；</p>
+</li>
+<li><p>如果两个对象的 hashCode 相同，它们并不一定相同（即：用 equals 比较返回 false），hashcode()散列算法只是尽量保证不同对象有不同的hash值，比如假设内存中存在着超过2^32个对象，那么肯定存在两个不同对象hashcode值相同；</p>
+</li>
+</ul>
+<p>《Effective java》一书中这样说到：在每个覆盖了 equals() 方法的类中，也必须覆盖 hashCode() 方法，如果不这样做的话，就会违反 Object.hashCode 的通用的约定，从而导致该类无法结合所有基于散列的集合一起正常运作，这样的集合包括HashMap，HashSet 和 HashTable。</p>
+<h3 id="为什么要有hashcode"><a href="#为什么要有hashcode" class="headerlink" title="为什么要有hashcode()?"></a>为什么要有hashcode()?</h3><p>归根结底就是为了提高程序的效率才实现了 hashcode() 方法。程序先进行 hashcode 的比较，如果不同，那没就不必在进行 equals 的比较了，这样就大大减少了 equals 比较的次数，这对比需要比较的数量很大的效率提高是很明显的，一个很好的例子就是在集合中的使用：</p>
+<p>我们都知道java中的List集合是有序的，因此是可以重复的，而set集合是无序的，因此是不能重复的。那么怎么能保证不能被放入重复的元素呢？单靠 equals() 方法比较的话，如果原来集合中有10000个元素，那么放入第10001个元素时，难道要将前面的所有元素都进行比较，看看是否有重复？这个效率可想而知。因此 hashcode 就应遇而生了，java 就采用了 hash 表，利用哈希算法（也叫散列算法），就是将对象数据根据该对象的特征使用特定的算法将其定义到一个地址上，那么在后面定义进来的数据只要看对应的 hashcode 地址上是否有值，那么就用equals 比较，如果没有则直接插入，这样就大大减少了 equals 的使用次数，执行效率就大大提高了。</p>
+<h3 id="为什么重写equals-要重写hashcode-？"><a href="#为什么重写equals-要重写hashcode-？" class="headerlink" title="为什么重写equals()要重写hashcode()？"></a>为什么重写equals()要重写hashcode()？</h3><p>重写 hashcode() 方法的原因，简单的说就是：为了保证是同一个对象，在 equals 比较相同的情况下 hashcode值必定相同。比如自定义学生类重写了equals()方法，没有重写hashcode()方法，那么两个姓名，年龄，性别还有其他都相同的学生按道理是同一个学生，但是hashcode()却不同，违背了上面的原则。详见<a href="https://blog.csdn.net/weixin_44259720/article/details/88414828" target="_blank" rel="noopener">这里</a></p>
+<h3 id="4-8种基本类型的包装类和常量池"><a href="#4-8种基本类型的包装类和常量池" class="headerlink" title="4.8种基本类型的包装类和常量池"></a>4.8种基本类型的包装类和常量池</h3><p>Java 基本类型的包装类的大部分都实现了常量池技术，即 Byte,Short,Integer,Long,Character,Boolean；前面 4 种包装类默认创建了数值[-128，127] 的相应类型的缓存数据，Character创建了数值在[0,127]范围的缓存数据，Boolean 直接返回True Or False。如果超出对应范围仍然会去创建新的对象。两种浮点数类型的包装类 Float,Double 并没有实现常量池技术。</p>
+<p>Integer 缓存源代码：</p>
+<pre><code class="hljs java"><span class="hljs-comment">/**</span>
+<span class="hljs-comment">*此方法将始终缓存-128 到 127（包括端点）范围内的值，并可以缓存此范围之外的其他值。</span>
+<span class="hljs-comment">*/</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> Integer <span class="hljs-title">valueOf</span><span class="hljs-params">(<span class="hljs-keyword">int</span> i)</span> </span>&#123;
+        <span class="hljs-keyword">if</span> (i &gt;= IntegerCache.low &amp;&amp; i &lt;= IntegerCache.high)
+            <span class="hljs-keyword">return</span> IntegerCache.cache[i + (-IntegerCache.low)];
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> Integer(i);
+    &#125;</code></pre>
+<p>应用场景：</p>
+<ul>
+<li>Integer i1=40；Java 在编译的时候会直接将代码封装成 Integer i1=Integer.valueOf(40);，从而使用常量池中的对象。</li>
+<li>Integer i1 = new Integer(40);这种情况下会创建新的对象。<pre><code class="hljs java">Integer i1 = <span class="hljs-number">40</span>;
+Integer i2 = <span class="hljs-number">40</span>;
+Integer i3 = <span class="hljs-number">0</span>;
+Integer i4 = <span class="hljs-keyword">new</span> Integer(<span class="hljs-number">40</span>);
+Integer i5 = <span class="hljs-keyword">new</span> Integer(<span class="hljs-number">40</span>);
+Integer i6 = <span class="hljs-keyword">new</span> Integer(<span class="hljs-number">0</span>);
+
+System.out.println(<span class="hljs-string">"i1=i2   "</span> + (i1 == i2));<span class="hljs-comment">//true,常量池中同一个常量</span>
+System.out.println(<span class="hljs-string">"i1=i2+i3   "</span> + (i1 == i2 + i3));<span class="hljs-comment">//true</span>
+System.out.println(<span class="hljs-string">"i1=i4   "</span> + (i1 == i4));<span class="hljs-comment">//false,一个是常量池中常量，另一个是堆中对象</span>
+System.out.println(<span class="hljs-string">"i4=i5   "</span> + (i4 == i5));<span class="hljs-comment">//false，堆中不同对象</span>
+System.out.println(<span class="hljs-string">"i4=i5+i6   "</span> + (i4 == i5 + i6));<span class="hljs-comment">//true，自动拆箱，Integer对象不能+，先自动拆箱为int，再进行数值比较   </span>
+System.out.println(<span class="hljs-string">"40=i5+i6   "</span> + (<span class="hljs-number">40</span> == i5 + i6));<span class="hljs-comment">//true，nteger 对象无法与数值进行直接比较，所以 i4 自动拆箱转为 int 值 40，最终这条语句转为 40 == 40 进行数值比较。</span></code></pre>
+
+
+
+
+
+</li>
+</ul>
+
+            </article>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/java/">java</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/java/">java</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" target="_blank" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <div class="post-prev col-6">
+                    
+                    
+                      <a href="/2020/05/27/string/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">string</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </div>
+                  <div class="post-next col-6">
+                    
+                    
+                      <a href="/2020/05/25/xml/">
+                        <span class="hidden-mobile">web.xml配置说明</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </div>
+                </div>
+              
+            </div>
+
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
+  <div id="tocbot"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+  </main>
+
+  
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  
+
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <div>
+      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
+      <i class="iconfont icon-love"></i>
+      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
+        <span>Fluid</span></a>
+    </div>
+    
+
+    
+
+    
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/main.js" ></script>
+
+
+  <script  src="/js/lazyload.js" ></script>
+
+
+
+  
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
+
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: '.post-content',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 0,
+        scrollSmooth: true,
+        headingsOffset: -boardTop
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc').css('visibility', 'visible');
+      }
+    });
+  </script>
+
+
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
+
+
+
+
+
+
+<!-- Plugins -->
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "JavaGuide学习笔记&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "hover",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      searchFunc(path, 'local-search-input', 'local-search-result');
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <script>
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
+      function () {
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

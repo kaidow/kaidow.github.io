@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  <title>《深入分析javaweb技术内幕》学习笔记 - Hexo</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+<link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_fmb4a04yx8h.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_pjno9b9zyxs.css">
+
+
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>BryantX</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/">
+              <i class="iconfont icon-home-fill"></i>
+              Home</a>
+          </li>
+        
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/archives/">
+              <i class="iconfont icon-archive-fill"></i>
+              Archives</a>
+          </li>
+        
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/categories/">
+              <i class="iconfont icon-category-fill"></i>
+              Categories</a>
+          </li>
+        
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/tags/">
+              <i class="iconfont icon-tags-fill"></i>
+              Tags</a>
+          </li>
+        
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/about/">
+              <i class="iconfont icon-user-fill"></i>
+              About</a>
+          </li>
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="view intro-2" id="background" parallax=true
+         style="background: url('/img/kobe.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              
+                <div class="mt-3 post-meta">
+                  <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+                  <time datetime="2020-06-19 10:06">
+                    June 19, 2020 am
+                  </time>
+                </div>
+              
+
+              <div class="mt-1">
+                
+                  
+                  <span class="post-meta mr-2">
+                    <i class="iconfont icon-chart"></i>
+                    4.7k 字
+                  </span>
+                
+
+                
+                  
+                  <span class="post-meta mr-2">
+                      <i class="iconfont icon-clock-fill"></i>
+                    
+                    
+                    53
+                     分钟
+                  </span>
+                
+
+                
+              </div>
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <div class="post-content mx-auto" id="post">
+            
+            <article class="markdown-body">
+              <h1 id="《深入分析javaweb技术内幕》学习笔记"><a href="#《深入分析javaweb技术内幕》学习笔记" class="headerlink" title="《深入分析javaweb技术内幕》学习笔记"></a>《深入分析javaweb技术内幕》学习笔记</h1><h2 id="第一章-深入web请求过程"><a href="#第一章-深入web请求过程" class="headerlink" title="第一章 深入web请求过程"></a>第一章 深入web请求过程</h2><p>第一章主要介绍了web中一个请求是怎么样一步步的到达服务器的，主要介绍了http解析和dns解析的过程。</p>
+<p><img src="https://img-blog.csdn.net/20180423104123732" srcset="/img/loading.gif" alt=""></p>
+<p>首先，你想访问一个网站，但是网络中主机之间的交互都是通过ip地址，但是ip地址人又不好记，因而这就是域名存在的意义，映射到一个ip地址。所以浏览器会先请求dns把域名解析成IP地址。</p>
+<h2 id="DNS解析过程"><a href="#DNS解析过程" class="headerlink" title="DNS解析过程"></a>DNS解析过程</h2><ol>
+<li>浏览器缓存：浏览器检查缓存中是否存在这个域名解析过的ip地址，如果有就结束。浏览器缓存是有限制的，缓存的大小和缓存的时间都是有限制的。域名缓存的时间限制可以通过TTL属性来设置，这个缓存时间太长太短都不好。太长的话如果缓存的域名ip发生变化，结果你缓存的是旧ip会导致用户无法访问；太短的话会导致用户每次访问都要解析。</li>
+<li>操作系统缓存：浏览器缓存没有的话，浏览器会到操作系统缓存中查找。windows本地dns缓存文件地址为：C:\Windows\System32\drivers\etc\hosts。github访问过慢就可以通过添加域名缓存来加速，因为跳过了后面访问dns服务器的过程。但是将一个域名缓存的ip地址改为另一个域名的ip好像没用，我就试了将百度的域名指向github的，没用。</li>
+<li>Local DNS：前面的都没有的话那就要访问本地域名解析服务器，通常是你接入互联网的应用提供商，本地域名解析服务器也会有缓存，80%的域名解析到这里就完成了。</li>
+<li>RootServer：LDNS未命中的话就要访问根dns，根dns返回给Ldns一个所查询域名的主域名服务器（gTLD Server）地址</li>
+<li>gTLD Server：主域名服务器是国际顶级域名服务器，如com,cn,org等，Ldns向gTLDServer发送请求，gTLDServer查找并返回NameServer域名服务器的地址</li>
+<li>NameServer：域名服务器通常就是你注册域名的提供商的服务器，查找对应的ip并连同一个TTL返回给Ldns</li>
+<li>Ldns本地域名解析服务器会先将ip和ttl缓存，再返回给用户</li>
+<li>缓存到本地系统缓存和浏览器缓存</li>
+</ol>
+<p>这是域名解析过程，其实域名解析过程分两种，一种是递归，一种是迭代，上面的是迭代，就是每一次解析都要返回给Ldns，而递归就是一层层去查询。但是这个过程明显和上面的图不一致，因为上面的图加上了cdn。</p>
+<h2 id="CDN内容分布网络"><a href="#CDN内容分布网络" class="headerlink" title="CDN内容分布网络"></a>CDN内容分布网络</h2><p>CDN是构筑在现有网络上的一种先进的流量分配网络，目的是通过在现有的Internet中增加一层新的网络架构将网络的内容发布到最近用户的网络“边缘”，使用户就近取得所需的内容，提高用户访问的响应速度。CDN=镜像+缓存+负载均衡。</p>
+<p>CDN主要以缓存静态资源为主，如css，js和图片等，用户再从主站服务器请求到动态内容后，再从CDN上下载这些静态资源，从而加快了响应速度。</p>
+<p>参考了这篇<a href="https://www.jianshu.com/p/070623a739f5" target="_blank" rel="noopener">博客</a>后有所领悟。</p>
+<p>结合上面的那个图解释一下，你访问一个域名比如baidu,首先会按照上面dns解析的过程进行解析，但是实际情况下返回的不是baidu的ip，而是另一个别名域名Cname(<a href="http://www.a.shifen.com)（Canonical" target="_blank" rel="noopener">www.a.shifen.com)（Canonical</a> name），从根域名服务器再去解析，然后这个域名最终会被指向CDN全局中DNS负载均衡服务器，再由这个GTM来根据算法得到最近的CDN服务器节点，返回这个CDN节点的ip，如果这个节点请求的资源不存在，就会回到源站去取这个资源。上面的图感觉有不少错误，箭头方向和顺序感觉不是很对。</p>
+<h2 id="HTTP协议"><a href="#HTTP协议" class="headerlink" title="HTTP协议"></a>HTTP协议</h2><p>接着上面，你得到了访问域名的ip地址之后，浏览器就会将数据封装成http报文，中间涉及到的计网知识就不说了，接着就是请求和响应了。下面简单介绍一下http协议，具体的网上很多。</p>
+<p>http协议是基本知识，这里就说一下书上有关的内容，书上只说了一些请求头和响应头，其实http是通信的一种协议，也就是规定了数据的格式，你甚至可以模拟http协议。然后简单讲了一下浏览器的缓存机制，原理并没说，就说你按Ctrl+F5刷新页面会让浏览器直接向目标URL发送请求，而不会使用浏览器缓存的数据，其实也就是请求头中Cache-Control/Pragma字段为no-cache。</p>
+<h2 id="第二章-深入分析Java-I-O的工作机制"><a href="#第二章-深入分析Java-I-O的工作机制" class="headerlink" title="第二章 深入分析Java I/O的工作机制"></a>第二章 深入分析Java I/O的工作机制</h2><p>从java基本I/O类库说起，主要介绍了磁盘I/O和网络I/O（NIO）的基本工作方式，最后介绍了I/O调优的一些方法。</p>
+<h2 id="磁盘I-O工作机制"><a href="#磁盘I-O工作机制" class="headerlink" title="磁盘I/O工作机制"></a>磁盘I/O工作机制</h2><p>访问文件的方式：读取和写入文件I/O操作都是调用操作系提供的接口read()和write(),因为磁盘设备是由操作系用管理的，应用程序要访问物理设备只能通过系统调用，而系统调用就存在用户空间地址和内核空间地址的切换的问题，数据从磁盘复制到内核空间地址，再复制到应用空间地址是非常耗时的。因而操作系统为了加速访问在内核空间地址使用了缓存机制。</p>
+<ol>
+<li>标准访问文件的方式：操作系统先检查内核空间的高速缓存是否存在需要的数据，如果没有再从磁盘中读取。<em>应用程序没有缓存么，这里为什么不是先访问应用缓存？我感觉书上漏说了，因为他图上是有应用缓存的</em></li>
+<li>直接I/O的方式：应用程序先访问应用缓存，如果没有再直接访问磁盘数据，目的是减少一次内核缓存到应用缓存的数据复制，但是直接访问磁盘是非常缓慢的</li>
+<li>同步访问文件的方式：数据的写入和读取都是同步的</li>
+<li>异步访问文件的方式：访问数据的线程发出请求之后，会接着取处理其他的事情，而不是阻塞等待，当请求的数据返回之后继续处理下面的操作。</li>
+<li>内存映射的方式：内存中的某一块区域与磁盘中的文件关联起来，当要访问内存中的一段数据时，转换为访问文件夹的某一段数据。目的同样是减少数据从内核空间复制到应用空间的操作</li>
+</ol>
+<p>Java访问磁盘文件：</p>
+<p><img src="https://img-blog.csdn.net/2018073015361938?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2VuX2pva2Vy/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" srcset="/img/loading.gif" alt=""></p>
+<p> 当传入一个文件路径时，将会根据这个路径创建一个File对象来标识这个文件，然后根据这个File对象创建真正读取文件的操作对象，这时将会真正创建一个关联真实存在的磁盘文件的文件描述符FileDescriptor，通过这个对象可以直接控制这个磁盘文件。由于我们需要读取的是字符格式，所以需要StreamDecoder类将byte解码为char格式。至于如何从磁盘驱动器上读取一段数据，操作系统会帮我们完成。</p>
+<p> <img src="https://img-blog.csdn.net/20180510192119389?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3lvdW5neW91dGg=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" srcset="/img/loading.gif" alt=""></p>
+<h2 id="网络I-O工作机制"><a href="#网络I-O工作机制" class="headerlink" title="网络I/O工作机制"></a>网络I/O工作机制</h2><p> 重点介绍了nio，可以参考这篇博客<a href="https://my.oschina.net/u/3471412/blog/2966696" target="_blank" rel="noopener">Java核心（五）深入理解BIO、NIO、AIO</a>。</p>
+<p> 调用Selector的静态工厂创建一个选择器Selector.open(),创建一个服务器端的Channelssc，绑定到一个Socket对象，并把这个通信信道注册到选择器上，把这个通信信道设置为非阻塞模式，然后就可以调用Selector的selectedKeys方法来检查已经注册在这个选择器上的所有通信信道是否有需要的事件发生，如果有某个事件发生，将会返回所有的SelectionKey，通过这个对象的Channel方法就可以取得这个通信信道对象，从而读取通信的数据。<br> <pre><code class="hljs java"> <span class="hljs-comment">// NIO 多路复用</span>
+ThreadPoolExecutor threadPool = <span class="hljs-keyword">new</span> ThreadPoolExecutor(<span class="hljs-number">4</span>, <span class="hljs-number">4</span>,
+        <span class="hljs-number">60L</span>, TimeUnit.SECONDS, <span class="hljs-keyword">new</span> LinkedBlockingQueue&lt;Runnable&gt;());
+threadPool.execute(<span class="hljs-keyword">new</span> Runnable() &#123;
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">run</span><span class="hljs-params">()</span> </span>&#123;
+        <span class="hljs-keyword">try</span> (Selector selector = Selector.open();
+             ServerSocketChannel serverSocketChannel = ServerSocketChannel.open();) &#123;
+            serverSocketChannel.bind(<span class="hljs-keyword">new</span> InetSocketAddress(InetAddress.getLocalHost(), port));
+            serverSocketChannel.configureBlocking(<span class="hljs-keyword">false</span>);
+            serverSocketChannel.register(selector, SelectionKey.OP_ACCEPT);
+            <span class="hljs-keyword">while</span> (<span class="hljs-keyword">true</span>) &#123;
+                selector.select(); <span class="hljs-comment">// 阻塞等待就绪的Channel</span>
+                Set&lt;SelectionKey&gt; selectionKeys = selector.selectedKeys();
+                Iterator&lt;SelectionKey&gt; iterator = selectionKeys.iterator();
+                <span class="hljs-keyword">while</span> (iterator.hasNext()) &#123;
+                    SelectionKey key = iterator.next();
+                    <span class="hljs-keyword">try</span> (SocketChannel channel = ((ServerSocketChannel) key.channel()).accept()) &#123;
+                        channel.write(Charset.defaultCharset().encode(<span class="hljs-string">"你好，世界"</span>));
+                    &#125;
+                    iterator.remove();
+                &#125;
+            &#125;
+        &#125; <span class="hljs-keyword">catch</span> (IOException e) &#123;
+            e.printStackTrace();
+        &#125;
+    &#125;
+&#125;);</code></pre></p>
+<h2 id="I-O调优"><a href="#I-O调优" class="headerlink" title="I/O调优"></a>I/O调优</h2><p>磁盘I/O优化：增加缓存；优化磁盘的管理系统，设计最优的磁盘方式策略以及磁盘的寻址策略；应用合理的RAID策略（不是很懂）</p>
+<p>网络I/O优化基本原则：减少网络交互的次数（设置缓存，合并访问请求）；减少网络传输数据量的大小（数据压缩再传输gzip）；尽量减少编码</p>
+<p>最后还见到介绍了设计模式中的适配器模式和装饰者模式，因为javaI/O类库中有很多这样的需求。</p>
+<h1 id="第三章-深入分析JavaWeb中的中文编码问题"><a href="#第三章-深入分析JavaWeb中的中文编码问题" class="headerlink" title="第三章 深入分析JavaWeb中的中文编码问题"></a>第三章 深入分析JavaWeb中的中文编码问题</h1><p>本章主要分析了在JavaWeb中有哪些地方涉及到了中文编码问题，包括http请求中存在的编码和tomcat对http的解析，为了分析这个问题首先介绍了一下一些常见的包含中文的字符集和编码格式，最后介绍了一些常见的中文乱码问题的原因。</p>
+<h2 id="几种常见的编码格式"><a href="#几种常见的编码格式" class="headerlink" title="几种常见的编码格式"></a>几种常见的编码格式</h2><ol>
+<li>ASCII码：</li>
+</ol>
+<p>总共有128个，用一个字节的低7位表示，0<del>31是控制字符，如换行，回车，删除等，32</del>126是打印字符，可以通过键盘输入并显示出来</p>
+<ol start="2">
+<li>ISO-8859-1:</li>
+</ol>
+<p>由于128个字符显然是不够用的，ISO在ASCII码的基础上进行了扩展，产生了ISO-8859-1到ISO-8859-15,其中ISO-8859-1涵盖了大多数修语言字符，应用最为广泛。ISO-8859-1是单字节编码，总共能表示256个字符。</p>
+<ol start="3">
+<li>GB2312:</li>
+</ol>
+<p>全称是《信息技术中文编码字符集》，是双字节编码，总的编码范围是A1<del>F7,其中A1</del>A9是符号区，总共包含682个符号，B0~F7是汉字区，总共包含6763个汉字。</p>
+<ol start="4">
+<li>GBK:</li>
+</ol>
+<p>全程是《汉字内码扩展规范》，编码范围是8140~FEFE（去掉XX7F），总共有23940个码位，能表示21003个汉字，编码是和GB2312兼容的。</p>
+<ol start="5">
+<li>GB18030:</li>
+</ol>
+<p>可能是单字节，双字节或四字节编码，与GB2312兼容，实际应用并不广泛。</p>
+<ol start="6">
+<li>UTF-16:</li>
+</ol>
+<p>UTF（Unicode :Universal Code统一码）ISO试图创建的包含所有语言字符的超语言字典。UTF-16用2个字节表示Unicode的转化格式，采用定长的表示方法，即不论什么字符都可以用两个字节来表示，这大大简化了字符串的操作，也是Java以UTF-16作为内存字符存储格式的一个重要原因。</p>
+<ol start="7">
+<li>UTF-8:</li>
+</ol>
+<p>UTF-16的定长编码导致很多用单字节就可以表示的字符要用两个字节表示，导致存储空间极大浪费以及网络传输流量的浪费，UTF-8采用了变长编码，每个编码区域有不同的字码长度，不同类的字符可以由1~6个字节组成。</p>
+<h2 id="Java中需要编码的场景"><a href="#Java中需要编码的场景" class="headerlink" title="Java中需要编码的场景"></a>Java中需要编码的场景</h2><ol>
+<li>I/O</li>
+</ol>
+<p>Reader类是JavaI/O中所有读字符的父类，Inputstream类是读字节的父类，InputstreamReader是字节转化，为字符的桥梁，而对具体字节到字符的解码实现，它又委托StreamDecoder去实现，StreamDecoder的解码过程必须由用户指定Charset指定编码格式。</p>
+<ol start="2">
+<li>内存操作中的编码</li>
+</ol>
+<p>在内存中进行从字符到字节的数据类型转换。</p>
+<pre><code class="hljs java">String s = <span class="hljs-string">"你好"</span>;
+<span class="hljs-comment">//字符串转化为字节数组</span>
+<span class="hljs-keyword">byte</span>[] bytes=s.getBytes(<span class="hljs-string">"UTF-8"</span>);
+<span class="hljs-comment">//字节数组转化为字符串</span>
+String n = <span class="hljs-keyword">new</span> String(bytes,<span class="hljs-string">"UTF-8"</span>);</code></pre>
+
+<p>Charset类提供encode()和decode()方法分别对应char[ ]到byte[ ]的编码和byte[ ]到char[ ]的解码</p>
+<pre><code class="hljs java">Charset charset=Charset.forName(<span class="hljs-string">"UTF-8"</span>);
+ByteBuffer bytebuffer=charset.encode(string);
+CharBuffer charbuffer=charset.decode(bytebuffer);</code></pre>
+<h2 id="Java中如何编解码"><a href="#Java中如何编解码" class="headerlink" title="Java中如何编解码"></a>Java中如何编解码</h2><p><img src="https://www.ibm.com/developerworks/cn/java/j-lo-chinesecoding/image007.jpg" srcset="/img/loading.gif" alt="java编码类图"></p>
+<p>首先根据指定的 charsetName 通过 Charset.forName(charsetName) 设置 Charset 类，然后根据 Charset 创建 CharsetEncoder 对象，再调用 CharsetEncoder.encode 对字符串进行编码，不同的编码类型都会对应到一个类中，实际的编码过程是在这些类中完成的。下面是 String. getBytes(charsetName) 编码过程的时序图<br><img src="https://www.ibm.com/developerworks/cn/java/j-lo-chinesecoding/image009.jpg" srcset="/img/loading.gif" alt=""></p>
+<p>上图可以看出根据 charsetName 找到 Charset 类，然后根据这个字符集编码生成 CharsetEncoder，这个类是所有字符编码的父类，针对不同的字符编码集在其子类中定义了如何实现编码，有了 CharsetEncoder 对象后就可以调用 encode 方法去实现编码了。这个是 String.getBytes 编码方法，其它的如 StreamEncoder 中也是类似的方式。</p>
+<p>调用StringCoding.encode()方法</p>
+<pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">byte</span>[] getBytes(String charsetName)
+            <span class="hljs-keyword">throws</span> UnsupportedEncodingException &#123;
+        <span class="hljs-keyword">if</span> (charsetName == <span class="hljs-keyword">null</span>) <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> NullPointerException();
+        <span class="hljs-keyword">return</span> StringCoding.encode(charsetName, value, <span class="hljs-number">0</span>, value.length);
+    &#125;</code></pre>
+
+<pre><code class="hljs java"><span class="hljs-keyword">static</span> <span class="hljs-keyword">byte</span>[] encode(String charsetName, <span class="hljs-keyword">char</span>[] ca, <span class="hljs-keyword">int</span> off, <span class="hljs-keyword">int</span> len)
+       <span class="hljs-keyword">throws</span> UnsupportedEncodingException
+   &#123;
+       <span class="hljs-comment">//获取编码器</span>
+       StringEncoder se = deref(encoder);
+       <span class="hljs-comment">//获取字符集名，默认为ISO8859-1</span>
+       String csn = (charsetName == <span class="hljs-keyword">null</span>) ? <span class="hljs-string">"ISO-8859-1"</span> : charsetName;
+       <span class="hljs-comment">//如果编码器为空或者编码器的编码格式与要求编码的字符集不一致，重新根据字符集名创建编码器</span>
+       <span class="hljs-keyword">if</span> ((se == <span class="hljs-keyword">null</span>) || !(csn.equals(se.requestedCharsetName())
+                             || csn.equals(se.charsetName()))) &#123;
+           se = <span class="hljs-keyword">null</span>;
+           <span class="hljs-keyword">try</span> &#123;
+               <span class="hljs-comment">//根据字符集名查询字符集</span>
+               Charset cs = lookupCharset(csn);
+               <span class="hljs-keyword">if</span> (cs != <span class="hljs-keyword">null</span>)
+                   se = <span class="hljs-keyword">new</span> StringEncoder(cs, csn);
+           &#125; <span class="hljs-keyword">catch</span> (IllegalCharsetNameException x) &#123;&#125;
+           <span class="hljs-keyword">if</span> (se == <span class="hljs-keyword">null</span>)
+               <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> UnsupportedEncodingException (csn);
+           set(encoder, se);
+       &#125;
+       <span class="hljs-keyword">return</span> se.encode(ca, off, len);
+   &#125;</code></pre>
+<pre><code class="hljs java"><span class="hljs-keyword">byte</span>[] encode(<span class="hljs-keyword">char</span>[] ca, <span class="hljs-keyword">int</span> off, <span class="hljs-keyword">int</span> len) &#123;
+    <span class="hljs-comment">//根据字符的最大字节数获取字节数组的大小</span>
+           <span class="hljs-keyword">int</span> en = scale(len, ce.maxBytesPerChar());
+           <span class="hljs-keyword">byte</span>[] ba = <span class="hljs-keyword">new</span> <span class="hljs-keyword">byte</span>[en];
+           <span class="hljs-keyword">if</span> (len == <span class="hljs-number">0</span>)
+               <span class="hljs-keyword">return</span> ba;
+           <span class="hljs-comment">//如果charsetencoder字符集编码器是数组编码器的话</span>
+           <span class="hljs-keyword">if</span> (ce <span class="hljs-keyword">instanceof</span> ArrayEncoder) &#123;
+               <span class="hljs-keyword">int</span> blen = ((ArrayEncoder)ce).encode(ca, off, len, ba);
+               <span class="hljs-keyword">return</span> safeTrim(ba, blen, cs, isTrusted);
+           &#125; <span class="hljs-keyword">else</span> &#123;
+               ce.reset();
+               ByteBuffer bb = ByteBuffer.wrap(ba);
+               <span class="hljs-comment">//将字符数组包裹为字符缓冲</span>
+               CharBuffer cb = CharBuffer.wrap(ca, off, len);
+               <span class="hljs-keyword">try</span> &#123;
+                   <span class="hljs-comment">//根据字符集编码器将字符缓冲编码进字节缓冲中</span>
+                   CoderResult cr = ce.encode(cb, bb, <span class="hljs-keyword">true</span>);
+                   <span class="hljs-keyword">if</span> (!cr.isUnderflow())
+                       cr.throwException();
+                   cr = ce.flush(bb);
+                   <span class="hljs-keyword">if</span> (!cr.isUnderflow())
+                       cr.throwException();
+               &#125; <span class="hljs-keyword">catch</span> (CharacterCodingException x) &#123;
+                   <span class="hljs-comment">// Substitution is always enabled,</span>
+                   <span class="hljs-comment">// so this shouldn't happen</span>
+                   <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> Error(x);
+               &#125;
+               <span class="hljs-keyword">return</span> safeTrim(ba, bb.position(), cs, isTrusted);
+           &#125;
+       &#125;
+   &#125;</code></pre>
+
+<h2 id="JavaWeb中涉及的编解码"><a href="#JavaWeb中涉及的编解码" class="headerlink" title="JavaWeb中涉及的编解码"></a>JavaWeb中涉及的编解码</h2><p><img src="https://img-blog.csdn.net/20181010200356282?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L20wXzM3NTU2NDQ0/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" srcset="/img/loading.gif" alt=""></p>
+<p>用户从浏览器发起一个HTTP请求，存在编码的地方是URL、Cookie、Paramiter。服务器端接收到HTTP请求后要解析HTTP协议，其中URL、Cookie和POST表单参数要解码，服务器端可能还需要读取硬盘数据（数据库、文件），这些数据都可能存在编码问题。当Servlet处理完所有请求的数据后，需要将这些数据再编码通过Socket发送到用户请求的浏览器里，再经过浏览器解码成为文本.</p>
+<ol>
+<li>URL的编解码</li>
+</ol>
+<p><img src="https://img-blog.csdn.net/20181010200410456?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L20wXzM3NTU2NDQ0/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" srcset="/img/loading.gif" alt=""></p>
+<p>请求的URL的实际内容:</p>
+<p><img src="https://img-blog.csdn.net/20181010200449805?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L20wXzM3NTU2NDQ0/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" srcset="/img/loading.gif" alt=""></p>
+<p>从结果上看，PathInfo是UTF-8编码，而QueryString是GBK编码。至于为什么有%，是由URL的编码规范FRC3986规定：浏览器编码URL将非ASCII字符按照某种编码格式编码成16进制数字后将每个16进制表示的字节前加上“%”。从上面的测试结果可知，浏览器对PathInfo和QueryString的编码是不一样的，不同的浏览器对PathInfo的编码也可能不一样。</p>
+<p>tomcat接收到URL请求的解析过程：解析请求的URL是在org.apache.coyote.HTTP11.InternalInputBuffer的parseRequestLine方法中进行的，这个方法会把传过来的byte[ ]设置到request中，这里的URL仍然是byte格式，之后会转成char。而QueryString的解码时在reques.getParameter( )方法第一次被调用时进行的，这个方法被调用时会调用org.catalina.connector.Request的parseParameter方法，这个方法会对GET和POST方式的参数进行解码，QueryString的解码字符集是Header中ContentType定义的Charset或者是默认的ISO8859-1。</p>
+<ol start="2">
+<li>HTTP Header的编解码</li>
+</ol>
+<p>Header中传递的其他参数如Cookies，redirectPath等也会存在编码问题，对Header中的参数项进行解码也是在调用reques.getHeader( )时进行的，如果请求的Header参数项没有解码，则会调用MessageBytes的toString( )方法，这个方法对从byte到char的转化使用的也是ISO8859-1，而我们不能设置Header的其他解码格式，所以如果Header中有非ASCII码字符，解码中必然乱码</p>
+<ol start="3">
+<li>POST表单的编解码</li>
+</ol>
+<p>前面提到了POST表单提交的参数的解码是在第一次调用request.getParameter( )时发生的。POST表单参数传递方式与QueryString不同，它是通过HTTP的BODY传递到服务端的。当我们在页面上点击提交按钮时浏览器首先将根据页面的ContentType的Charset编码格式对表单填的参数进行编码，然后提交到服务器端。在服务器端同样也是用ContentType中的字符集进行解码。所以通过POST表单提交的参数一般不会出现问题，而且这个字符集编码是我们自己设置的。</p>
+<ol start="4">
+<li>HTTP Body的编解码</li>
+</ol>
+<p>当用户请求的资源服务端已经成功获取后，这些内容将通过Response返回给客户端浏览器，这个过程先要经过编码再到浏览器进行解码，编解码的字符集可以通过response.setCharacterEncoding( )来设置,会通过Header的Content-Type返回给客户端，浏览器根据Content-Type来解码，如果Content-Type没有设置，那么浏览器根据HTML的<meta HTTP-equiv=“Content-Type” content=”text/html; charset=GBK”>中的charset来解码。如果没有定义，那么浏览器将会使用默认的编码来解码。</p>
+<h1 id="第四章-Javac编译原理"><a href="#第四章-Javac编译原理" class="headerlink" title="第四章 Javac编译原理"></a>第四章 Javac编译原理</h1><p>主要介绍了javac如何将java源文件一步步编译成class文件，包含了主要的几个阶段：词法分析，语法分析，语义分析和代码生成，最后介绍了javac的一个核心设计模式访问者模式。</p>
+<p>编译原理学的不是很好，这一章没咋看懂，只是知道了个大致流程，涉及到的很多类，方法，属性书上也没仔细介绍，等以后再仔细研究把。</p>
+
+            </article>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" target="_blank" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <div class="post-prev col-6">
+                    
+                    
+                      <a href="/2020/06/24/linknode/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">linknode</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </div>
+                  <div class="post-next col-6">
+                    
+                    
+                      <a href="/2020/06/17/package/">
+                        <span class="hidden-mobile">knapsack</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </div>
+                </div>
+              
+            </div>
+
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
+  <div id="tocbot"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+  </main>
+
+  
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  
+
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <div>
+      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
+      <i class="iconfont icon-love"></i>
+      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
+        <span>Fluid</span></a>
+    </div>
+    
+
+    
+
+    
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/main.js" ></script>
+
+
+  <script  src="/js/lazyload.js" ></script>
+
+
+
+  
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
+
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: '.post-content',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 0,
+        scrollSmooth: true,
+        headingsOffset: -boardTop
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc').css('visibility', 'visible');
+      }
+    });
+  </script>
+
+
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
+
+
+
+
+
+
+<!-- Plugins -->
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "《深入分析javaweb技术内幕》学习笔记&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "hover",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      searchFunc(path, 'local-search-input', 'local-search-result');
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <script>
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
+      function () {
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  <title>rabbitmq - Hexo</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+<link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_fmb4a04yx8h.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_pjno9b9zyxs.css">
+
+
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>BryantX</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/">
+              <i class="iconfont icon-home-fill"></i>
+              Home</a>
+          </li>
+        
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/archives/">
+              <i class="iconfont icon-archive-fill"></i>
+              Archives</a>
+          </li>
+        
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/categories/">
+              <i class="iconfont icon-category-fill"></i>
+              Categories</a>
+          </li>
+        
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/tags/">
+              <i class="iconfont icon-tags-fill"></i>
+              Tags</a>
+          </li>
+        
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/about/">
+              <i class="iconfont icon-user-fill"></i>
+              About</a>
+          </li>
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="view intro-2" id="background" parallax=true
+         style="background: url('/img/kobe.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              
+                <div class="mt-3 post-meta">
+                  <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+                  <time datetime="2020-06-12 17:42">
+                    June 12, 2020 pm
+                  </time>
+                </div>
+              
+
+              <div class="mt-1">
+                
+                  
+                  <span class="post-meta mr-2">
+                    <i class="iconfont icon-chart"></i>
+                    1.8k 字
+                  </span>
+                
+
+                
+                  
+                  <span class="post-meta mr-2">
+                      <i class="iconfont icon-clock-fill"></i>
+                    
+                    
+                    19
+                     分钟
+                  </span>
+                
+
+                
+              </div>
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <div class="post-content mx-auto" id="post">
+            
+            <article class="markdown-body">
+              <h1 id="rabbitmq新手入门学习"><a href="#rabbitmq新手入门学习" class="headerlink" title="rabbitmq新手入门学习"></a>rabbitmq新手入门学习</h1><p><a href="https://www.rabbitmq.com/" target="_blank" rel="noopener">rabbitmq官网</a></p>
+<p><a href="https://blog.csdn.net/hellozpc/article/details/81436980" target="_blank" rel="noopener">参考博客</a></p>
+<h2 id="1-MQ概念"><a href="#1-MQ概念" class="headerlink" title="1.MQ概念"></a>1.MQ概念</h2><p>消息队列（Message Queue，简称MQ），从字面意思上看，本质是个队列，FIFO先入先出，只不过队列中存放的内容是message而已。<br>其主要用途：不同进程Process/线程Thread之间通信</p>
+<p>为什么会产生消息队列？有几个原因：</p>
+<ul>
+<li>不同进程（process）之间传递消息时，两个进程之间耦合程度过高，改动一个进程，引发必须修改另一个进程，为了隔离这两个进程，在两进程间抽离出一层（一个模块），所有两进程之间传递的消息，都必须通过消息队列来传递，单独修改某一个进程，不会影响另一个；</li>
+<li>不同进程（process）之间传递消息时，为了实现标准化，将消息的格式规范化了，并且，某一个进程接受的消息太多，一下子无法处理完，并且也有先后顺序，必须对收到的消息进行排队，因此诞生了事实上的消息队列；<h2 id="2-rabbitmq简介"><a href="#2-rabbitmq简介" class="headerlink" title="2.rabbitmq简介"></a>2.rabbitmq简介</h2>rabbitmq是使用Erlang （面向并发的编程语言）开发的一个开源的，基于AMQP（Advanced Message Queueing Protocol）协议的完整的可复用的消息系统。,支持主流操作系统Windows，linu，Macos，多种开发语言支持。<h2 id="3-安装"><a href="#3-安装" class="headerlink" title="3.安装"></a>3.安装</h2>对于windows平台官网提供了两种安装方法：</li>
+<li>第一种是最优方法，使用chocolatey（windows平台下的一种包管理器）安装，直接在powershell或者cmd输入一条命令就行,前提是安装chocolatey并且配好环境。<pre><code class="hljs plain">choco install rabbitmq</code></pre></li>
+<li>第二种是下载安装包安装，但是要先下载erlang</li>
+</ul>
+<h2 id="4-学习五种队列"><a href="#4-学习五种队列" class="headerlink" title="4.学习五种队列"></a>4.学习五种队列</h2><p><img src="https://img-blog.csdn.net/20180805224706123?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3pwY2FuZHpoag==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" srcset="/img/loading.gif" alt=""><br>代码博客里面都有，我只说说我的理解</p>
+<ul>
+<li>第一种：简单队列</li>
+</ul>
+<p>sender将消息发送到队列，receier从队列获取，sender和receiver彼此独立</p>
+<ul>
+<li>第二种：work模式</li>
+</ul>
+<p>一个生产者，多个消费者。自动确认时是采用轮询方式，也就是不管消费者处理任务的速度如何，消息总是轮流给消费者处理。举个例子，给小孩子分糖吃，大盘子里的糖果由生产者生产，每个小孩前面都有一个自己的小盘子，你将糖轮流一个个放到小孩子的盘子里，小孩子从自己的盘子里拿糖吃，小孩子吃糖有快有慢，但是现在小孩子吃糖和分糖是彼此独立的，因为小盘子的存在。但是小盘子这种数据结构是否存在我并不知道，但是我感觉这样才说得通。</p>
+<p>如果一个消费者在处理一个消息时被杀死了，他处理的消息也就会没了，这显然不是理想的。而且如果我想让消费者能者多得而不是像上面那样公平分配，吃糖吃的快的可以多吃。那就要手动确认，只有当一个消费者处理完消息发送确认，队列收到确认后才能继续获取消息。这样当一个消费者被杀死，由于没有发送确认，这里是队列重新发送还是生产者重新发送呢，讲道理按照目前的认知这还不是很清楚，因为队列里的消息被获取后除非有备份，对哦，应该是队列重新发送，消费者获取消息时，队列并不会像上面简单队列那样直接pop，而是将队尾消息复制发送给消费者，只有当队列收到消费者的确认时才pop。然后，能者多劳，就像上面的吃糖例子，现在不是轮流发到小盘子里，而是吃完了才能继续吃。小孩子拿到糖吃完后告诉你我吃完了，你听到了才继续发。</p>
+<ul>
+<li>第三种：publish/subscribe模式</li>
+</ul>
+<p><img src="https://img-blog.csdn.net/20180805225208186?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3pwY2FuZHpoag==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" srcset="/img/loading.gif" alt=""></p>
+<p>果然跟我之前的想法是一致的，生产者并不是直接发送消息到队列，而是发送到了交换机。其实生产者并不和队列直接打交道，他们之间有着一个媒介–交换机（exchange），交换机并没有存储消息的能力，只有队列有。每个消费者都有自己的队列，那么交换机怎么知道将消息转发到哪个队列，那就要将交换机与队列就行绑定，进行绑定了的消费者队列就相当于订阅了该生产者。这里也就解释了我之前的疑惑，交换机就相当于装糖的大盘子，但这个大盘子实际上不是存储糖的，而是分糖的中转站，由他负责将糖分给订阅了他的小孩子，每个小孩子前的小盘子也就是每个消费者的队列，对分到的糖进行存储，小孩子从小盘子里拿糖。</p>
+<p>这里如果先运行消费者，会报vhost里找不到声明的exchange，因为exchange并没有创建，那个博主的代码里消费者只声明了队列，并没有声明exchange，exchangeDeclare()和queueDeclare()方法如果exchange和queue不存在的话就创建。</p>
+<p>exchange有多种类型：direct，headers，topic和fanout，fanout也就是广播，将消息转发到所有绑定的消费者队列，一个消费者队列也可以有多个消费者，但是每一次只有一个消费者获取到，那么每次是哪个消费者获取呢，是随机还是轮流呢，我试了一下，结果是轮流。如果两个消费者声明了同一个队列，那么这两个消费者轮流接收消息。</p>
+<ul>
+<li>第四种：路由模式</li>
+</ul>
+<p><img src="https://img-blog.csdn.net/20180805225313904?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3pwY2FuZHpoag==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" srcset="/img/loading.gif" alt=""></p>
+<p>fanout将消息广播给所有订阅的消费者，那么如果有些消息不想要让一些消费者收到呢，这就要用路由模式。首先将exchange的类型改为direct，然后basicPublish的第二个参数传入routingkey，消费者绑定队列时通过第三个参数与routingkey绑定。既然是路由模式，我们可以用路由器来理解（看作交换机也可以，反正是多端口就行），将exchange看作一个多端口的路由器，每个端口对应一个routingkey，比如上图中就有error，info，warning三个端口，现在消费者通过绑定连接到路由器的一个或者多个端口，生产者生产消息时会提交消息对应的端口，路由器接收到消息后将消息转发到指定端口的队列。比如error的消息通过error端口转发出去，由于c1和c2两个消费者绑定该端口，所有两个队列都会收到。</p>
+<ul>
+<li>第五种：topic主题模式</li>
+</ul>
+<p><img src="https://img-blog.csdn.net/20180805225515258?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3pwY2FuZHpoag==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" srcset="/img/loading.gif" alt=""></p>
+<p>路由模式只通过一个规则进行匹配，那么如果我想匹配多个规则呢？举个例子，上面通过问题的严重性error，warning，info来匹配，现在我想添加一个颜色，红色的error该给哪个消费者队列，绿色的info又该给哪个。显然路由模式并不满足我们的需求，那就要用到topic模式，也叫适配器模式。*只能匹配单个word，#可以匹配0个或多个words。</p>
+
+            </article>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/rabbitmq/">rabbitmq</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/rabbitmq/">rabbitmq</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" target="_blank" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <div class="post-prev col-6">
+                    
+                    
+                      <a href="/2020/06/14/dp/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">dp</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </div>
+                  <div class="post-next col-6">
+                    
+                    
+                      <a href="/2020/05/29/springboot/">
+                        <span class="hidden-mobile">springboot</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </div>
+                </div>
+              
+            </div>
+
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
+  <div id="tocbot"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+  </main>
+
+  
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  
+
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <div>
+      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
+      <i class="iconfont icon-love"></i>
+      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
+        <span>Fluid</span></a>
+    </div>
+    
+
+    
+
+    
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/main.js" ></script>
+
+
+  <script  src="/js/lazyload.js" ></script>
+
+
+
+  
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
+
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: '.post-content',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 0,
+        scrollSmooth: true,
+        headingsOffset: -boardTop
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc').css('visibility', 'visible');
+      }
+    });
+  </script>
+
+
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
+
+
+
+
+
+
+<!-- Plugins -->
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "rabbitmq&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "hover",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      searchFunc(path, 'local-search-input', 'local-search-result');
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <script>
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
+      function () {
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

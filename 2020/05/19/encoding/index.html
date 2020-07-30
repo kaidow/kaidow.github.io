@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  <title>web中的字符编解码问题 - Hexo</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+<link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_fmb4a04yx8h.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_pjno9b9zyxs.css">
+
+
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>BryantX</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/">
+              <i class="iconfont icon-home-fill"></i>
+              Home</a>
+          </li>
+        
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/archives/">
+              <i class="iconfont icon-archive-fill"></i>
+              Archives</a>
+          </li>
+        
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/categories/">
+              <i class="iconfont icon-category-fill"></i>
+              Categories</a>
+          </li>
+        
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/tags/">
+              <i class="iconfont icon-tags-fill"></i>
+              Tags</a>
+          </li>
+        
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/about/">
+              <i class="iconfont icon-user-fill"></i>
+              About</a>
+          </li>
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="view intro-2" id="background" parallax=true
+         style="background: url('/img/kobe.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              
+                <div class="mt-3 post-meta">
+                  <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+                  <time datetime="2020-05-19 08:11">
+                    May 19, 2020 am
+                  </time>
+                </div>
+              
+
+              <div class="mt-1">
+                
+                  
+                  <span class="post-meta mr-2">
+                    <i class="iconfont icon-chart"></i>
+                    2.1k 字
+                  </span>
+                
+
+                
+                  
+                  <span class="post-meta mr-2">
+                      <i class="iconfont icon-clock-fill"></i>
+                    
+                    
+                    23
+                     分钟
+                  </span>
+                
+
+                
+              </div>
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <div class="post-content mx-auto" id="post">
+            
+            <article class="markdown-body">
+              <h1 id="浅谈web中的字符编解码问题"><a href="#浅谈web中的字符编解码问题" class="headerlink" title="浅谈web中的字符编解码问题"></a>浅谈web中的字符编解码问题</h1><p>字符乱码问题对于程序员来说并不是一个陌生的问题，在web开发中经常会遇到表单post提交时中文字符乱码问题，但是对于新手可能却是一个令人头疼的问题。下面我结合自己的理解简单解释一下web中的字符编解码问题。</p>
+<h2 id="1-编码和解码"><a href="#1-编码和解码" class="headerlink" title="1.编码和解码"></a>1.编码和解码</h2><p>计算机中存储的信息都是二进制，而我们在屏幕上看到的英文、汉字等字符是二进制数转换之后的结果。通俗的说，按照何种规则将字符存储在计算机中，如’a’用什么表示，称为”编码”；反之，将存储在计算机中的二进制数解析显示出来，称为”解码”，如同密码学中的加密和解密。在解码过程中，如果使用了错误的解码规则，则导致乱码。</p>
+<h2 id="2-常用字符集和字符编码"><a href="#2-常用字符集和字符编码" class="headerlink" title="2.常用字符集和字符编码"></a>2.常用字符集和字符编码</h2><p>字符集(Charset):是一个系统支持的所有抽象字符的集合。字符是各种文字和符号的总称，包括各国家文字、标点符号、图形符号、数字等。</p>
+<p>字符编码（Character Encoding）：是一套法则，使用该法则能够对自然语言的字符的一个集合（如字母表或音节表），与其他东西的一个集合（如号码或电脉冲）进行配对。</p>
+<blockquote>
+<p>(1) ASCII字符集&amp;编码:<br> ASCII（American Standard Code for Information Interchange，美国信息交换标准代码）是基于拉丁字母的一套电脑编码系统。它主要用于显示现代英语。<br> ASCII字符集：主要包括控制字符（回车键、退格、换行键等）；可显示字符（英文大小写字符、阿拉伯数字和西文符号）。<br> ASCII编码：将ASCII字符集转换为计算机可以接受的数字系统的数的规则。使用7位（bits）表示一个字符，共128字符，包括33个不可打印的控制字符(non-printing control characters)和95个可打印的字符。</p>
+</blockquote>
+<blockquote>
+<p>(2)ISO-8859-1<br> ISO-8859-1又称Latin-1，是国际标准化组织内ISO/IEC 8859的第一个8位字符集。它以ASCII为基础，在空置的0xA0-0xFF的范围内，加入96个字母及符号，藉以供使用附加符号的拉丁字母语言使用。是一个8位单字节字符集，它把ASCII的最高位也利用起来，并兼容了ASCII，新增的理论空间是128，但它并没有完全用完.</p>
+</blockquote>
+<blockquote>
+<p>(2) GBXXXX字符集&amp;编码<br> ASCII的最大缺点是只能显示26个基本拉丁字母、阿拉伯数目字和英式标点符号，因此只能用于显示现代美国英语，为了显示中文，必须设计一套编码规则用于将汉字转换为计算机可以接受的数字系统的数。<br> GB2312。GB2312或GB2312-80是中国国家标准简体中文字符集，全称《信息交换用汉字编码字符集·基本集》。规定：一个小于127的字符的意义与原来相同，但两个大于127的字符连在一起时，就表示一个汉字，前面的一个字节（他称之为高字节）从0xA1用到 0xF7，后面一个字节（低字节）从0xA1到0xFE，这样我们就可以组合出大约7000多个简体汉字了。在这些编码里，还把数学符号、罗马希腊的 字母、日文的假名们都编进去了，连在ASCII里本来就有的数字、标点、字母都统统重新编了两个字节长的编码，这就是常说的”全角”字符，而原来在127号以下的那些就叫”半角”字符了。</p>
+</blockquote>
+<blockquote>
+<p>(3) BIG5字符集&amp;编码<br> Big5，又称为大五码或五大码，是使用繁体中文（正体中文）社区中最常用的电脑汉字字符集标准，共收录13,060个汉字。</p>
+</blockquote>
+<blockquote>
+<p>(4) Unicode<br> Unicode（统一码、万国码、单一码、标准万国码）是业界的一种标准，它可以使电脑得以体现世界上数十种文字的系统。<br> UTF-8（8-bit Unicode Transformation Format）是一种针对Unicode的可变长度字符编码（定长码），也是一种前缀码。它可以用来表示Unicode标准中的任何字符，且其编码中的第一个字节仍与ASCII兼容，这使得原来处理ASCII字符的软件无须或只须做少部份修改，即可继续使用。因此，它逐渐成为电子邮件、网页及其他存储或传送文字的应用中，优先采用的编码。</p>
+</blockquote>
+<h2 id="3-乱码问题"><a href="#3-乱码问题" class="headerlink" title="3.乱码问题"></a>3.乱码问题</h2><p> 在web开发中经常遇到中文乱码问题，乱码问题的本质就是编码与解码的不一致。那么，我们首先要了解以下浏览器到服务器数据是怎么编码和解码的，也就是数据从发送到处理到接收经历了哪些编码和解码的过程。</p>
+<p> 从浏览器发起的访问方式有三种：在地址栏直接输入URL访问、点击页面中的超链接访问、提交表单访问。第一种访问方式浏览器默认将参数按照utf-8进行编码，后面两种访问方式浏览器将参数按照当前页面的显示编码进行编码。当你在浏览器输入一个url访问时，服务器会向你返回响应的页面，这个页面服务器会告诉浏览器用什么字符编码去解码，发送的数据用什么字符编码去编码，这也就是contentype的作用–设置当前页面的编码解码方式。你可以在jsp页面的顶部设置contentype，也可以通过response.setContenType()设置。<br> 那么既然浏览器和服务器都协商好了编码方式，为什么还会乱码。问题就在于我们使用的tomcat服务器，其他的服务器我没用过我不知道。当浏览器发送了按照页面指定的编码方式的二进制数据后（比如utf-8），tomcat服务器却会以默认的ISO-8859-1的编码方式去解码，而ISO-8859-1根本不包含中文的编码，解码出来的数据自然就是乱码的。服务器将乱码的数据按照页面指定的方式（utf-8）编码发送给浏览器，浏览器再解码自然也就是乱码的。</p>
+ <pre><code class="hljs java"> &lt;%@ page language=<span class="hljs-string">"java"</span> contentType=<span class="hljs-string">"text/html; charset=UTF-8"</span>
+         pageEncoding=<span class="hljs-string">"UTF-8"</span> <span class="hljs-keyword">import</span>=<span class="hljs-string">"java.util.*"</span> isELIgnored=<span class="hljs-string">"false"</span>%&gt;
+
+&lt;form method=<span class="hljs-string">"post"</span> action=<span class="hljs-string">"addProduct"</span>&gt;
+&lt;%--   &lt;input  type=<span class="hljs-string">"hidden"</span> name=<span class="hljs-string">"action"</span> value=<span class="hljs-string">"addProduct"</span>/&gt;--%&gt;
+    产品名称 ：&lt;input type=<span class="hljs-string">"text"</span> name=<span class="hljs-string">"name"</span> value=<span class="hljs-string">""</span>&gt;&lt;br /&gt;
+    产品价格： &lt;input type=<span class="hljs-string">"text"</span> name=<span class="hljs-string">"price"</span> value=<span class="hljs-string">""</span>&gt;&lt;br /&gt;
+
+    &lt;input type=<span class="hljs-string">"submit"</span> value=<span class="hljs-string">""</span>&gt;
+&lt;/form&gt;</code></pre>
+<p><img src="/img/form.png" srcset="/img/loading.gif" alt="一个添加商品的表单"></p>
+<pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ProductController</span> </span>&#123;
+    <span class="hljs-meta">@RequestMapping</span>(<span class="hljs-string">"addProduct"</span>)
+    <span class="hljs-function"><span class="hljs-keyword">public</span> ModelAndView <span class="hljs-title">handleRequest</span><span class="hljs-params">(Product product)</span> <span class="hljs-keyword">throws</span>  Exception</span>&#123;
+        System.out.println(product.getName());
+<span class="hljs-comment">//        byte[] bytes=product.getName().getBytes("iso-8859-1");</span>
+<span class="hljs-comment">//        String str=new String(bytes,"utf8");</span>
+<span class="hljs-comment">//        System.out.println(str);</span>
+<span class="hljs-comment">//        product.setName(str);</span>
+        ModelAndView modelAndView=<span class="hljs-keyword">new</span> ModelAndView(<span class="hljs-string">"showProduct"</span>);
+        <span class="hljs-keyword">return</span> modelAndView;
+    &#125;
+&#125;</code></pre>
+<p><img src="/img/luan.png" srcset="/img/loading.gif" alt="乱码"><br>这里乱码是肯定的，但是我不明白的是在控制台打印输出的是??????，为什么到浏览器端却是其他的乱码字符，不是很明白。</p>
+<p>解决这样的乱码也很简单，在服务器端将用ISO-8859-1解码的数据再用ISO-8859-1编码回去得到原来数据的utf-8二进制，然后再用utf-8进行解码就会得到原始的数据，就像我注释的测试代码一样，结果浏览器也会正确显示。这只是测试，其实只要你把tomcat服务器端的编码方式设置为utf-8就行，<code>request.setCharacterEncoding(&quot;UTF-8&quot;)</code>。那么你的每一个servlet的开头都要加上这句设置，这样的情况下就要用filter。</p>
+<pre><code class="hljs java">&lt;filter&gt;
+       &lt;filter-name&gt;CharacterEncodingFilter&lt;/filter-name&gt;
+       &lt;filter-<span class="hljs-class"><span class="hljs-keyword">class</span>&gt;<span class="hljs-title">org</span>.<span class="hljs-title">springframework</span>.<span class="hljs-title">web</span>.<span class="hljs-title">filter</span>.<span class="hljs-title">CharacterEncodingFilter</span>&lt;/<span class="hljs-title">filter</span>-<span class="hljs-title">class</span>&gt;</span>
+<span class="hljs-class">       &lt;<span class="hljs-title">init</span>-<span class="hljs-title">param</span>&gt;</span>
+<span class="hljs-class">           &lt;<span class="hljs-title">param</span>-<span class="hljs-title">name</span>&gt;<span class="hljs-title">encoding</span>&lt;/<span class="hljs-title">param</span>-<span class="hljs-title">name</span>&gt;</span>
+<span class="hljs-class">           &lt;<span class="hljs-title">param</span>-<span class="hljs-title">value</span>&gt;<span class="hljs-title">utf</span>-8&lt;/<span class="hljs-title">param</span>-<span class="hljs-title">value</span>&gt;</span>
+<span class="hljs-class">       &lt;/<span class="hljs-title">init</span>-<span class="hljs-title">param</span>&gt;</span>
+<span class="hljs-class">   &lt;/<span class="hljs-title">filter</span>&gt;</span>
+<span class="hljs-class">   &lt;<span class="hljs-title">filter</span>-<span class="hljs-title">mapping</span>&gt;</span>
+<span class="hljs-class">   &lt;<span class="hljs-title">filter</span>-<span class="hljs-title">name</span>&gt;<span class="hljs-title">CharacterEncodingFilter</span>&lt;/<span class="hljs-title">filter</span>-<span class="hljs-title">name</span>&gt;</span>
+<span class="hljs-class">   &lt;<span class="hljs-title">url</span>-<span class="hljs-title">pattern</span>&gt;/*&lt;/<span class="hljs-title">url</span>-<span class="hljs-title">pattern</span>&gt;</span>
+<span class="hljs-class">   &lt;/<span class="hljs-title">filter</span>-<span class="hljs-title">mapping</span>&gt;</span></code></pre>
+
+
+
+            </article>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" target="_blank" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <div class="post-prev col-6">
+                    
+                    
+                      <a href="/2020/05/25/xml/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">web.xml配置说明</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </div>
+                  <div class="post-next col-6">
+                    
+                    
+                      <a href="/2020/05/15/array/">
+                        <span class="hidden-mobile">Leetcode-Array</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </div>
+                </div>
+              
+            </div>
+
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
+  <div id="tocbot"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+  </main>
+
+  
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  
+
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <div>
+      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
+      <i class="iconfont icon-love"></i>
+      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
+        <span>Fluid</span></a>
+    </div>
+    
+
+    
+
+    
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/main.js" ></script>
+
+
+  <script  src="/js/lazyload.js" ></script>
+
+
+
+  
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
+
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: '.post-content',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 0,
+        scrollSmooth: true,
+        headingsOffset: -boardTop
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc').css('visibility', 'visible');
+      }
+    });
+  </script>
+
+
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
+
+
+
+
+
+
+<!-- Plugins -->
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "web中的字符编解码问题&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "hover",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      searchFunc(path, 'local-search-input', 'local-search-result');
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <script>
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
+      function () {
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

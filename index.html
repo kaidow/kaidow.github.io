@@ -157,33 +157,33 @@
     
     
     <div class="col-12 col-md-12 mx-auto index-info">
-      <a class="index-header" href="/2020/05/15/array/">Leetcode-Array</a>
+      <a class="index-header" href="/2020/06/24/linknode/">linknode</a>
 
-      <a href="/2020/05/15/array/" class="index-excerpt">
+      <a href="/2020/06/24/linknode/" class="index-excerpt">
         
         
           
         
-        <div>Leetcode-Array1.两数之和
-题目描述：给定一个整数数组 nums 和一个目标值 target，请你在该数组中找出和为目标值的那 两个整数，并返回他们的数组下标。示例：给定 nums = [2, 7, 11, 15], target = 9因为 nums[0] + nums[1] = 2 + 7 = 9，所以返回 [0, 1]。
+        <div>链表1.环路检测题目描述：返回链表环路的起始节点
+题解：如果存在环路，快慢指针必定会在环路相遇，假设在y相遇，则存在等式(m+y)2=m+y+xn ==&gt; m=n-y+(x-1)*n,要返回环路的起始节点，就是要求出m，这时候让一个指针从头开始，两个指针一起遍历n-y次后就是起始节点。
 
-
-暴力法&ensp;&ensp;（两层循环遍历就行，不</div>
+public LinkNode detectCycle(LinkNode head)&#123;
+   </div>
       </a>
 
       <div class="index-btm post-metas">
         
           <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>&nbsp;2020-05-15
+            <i class="iconfont icon-date"></i>&nbsp;2020-06-24
           </div>
         
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-category"></i>
             
-              <a href="/categories/Leetcode/">Leetcode</a>
+              <a href="/categories/leetcode/">leetcode</a>
             
-              <a href="/categories/Leetcode/Array/">Array</a>
+              <a href="/categories/leetcode/linklist/">linklist</a>
             
           </div>
         
@@ -191,9 +191,9 @@
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/Leetcode/">Leetcode</a>
+              <a href="/tags/leetcode/">leetcode</a>
             
-              <a href="/tags/Array/">Array</a>
+              <a href="/tags/linklist/">linklist</a>
             
           </div>
         
@@ -205,31 +205,62 @@
     
     
     <div class="col-12 col-md-12 mx-auto index-info">
-      <a class="index-header" href="/2020/05/13/hexo/">hexo个人博客的搭建</a>
+      <a class="index-header" href="/2020/06/19/book/">《深入分析javaweb技术内幕》学习笔记</a>
 
-      <a href="/2020/05/13/hexo/" class="index-excerpt">
+      <a href="/2020/06/19/book/" class="index-excerpt">
         
         
           
         
-        <div>Hexo个人博客的搭建离开校园，愈发地感到时光易逝，一天能做的真的很少，只有每天持之以恒，才能不负韶华，有所成长，所以才想以博客的方式记录自己一路的辛酸与收获。
-个人博客的搭建并不是什么技术活，小白也能按照🐏哥codesheepB站教学视频一步步搭建起自己的博客。写这篇博客我只想简单记录一下自己搭建的过程以及踩过的坑，顺便作个简单的思考与总结。
-1.准备工作首先，下载以下工具：
+        <div>《深入分析javaweb技术内幕》学习笔记第一章 深入web请求过程第一章主要介绍了web中一个请求是怎么样一步步的到达服务器的，主要介绍了http解析和dns解析的过程。
 
-Node.js</div>
+首先，你想访问一个网站，但是网络中主机之间的交互都是通过ip地址，但是ip地址人又不好记，因而这就是域名存在的意义，映射到一个ip地址。所以浏览器会先请求dns把域名解析成IP地址。
+DNS解析过程
+浏览器缓存：浏览器检查缓</div>
       </a>
 
       <div class="index-btm post-metas">
         
           <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>&nbsp;2020-05-13
+            <i class="iconfont icon-date"></i>&nbsp;2020-06-19
+          </div>
+        
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <div class="col-12 col-md-12 mx-auto index-info">
+      <a class="index-header" href="/2020/06/17/package/">knapsack</a>
+
+      <a href="/2020/06/17/package/" class="index-excerpt">
+        
+        
+          
+        
+        <div>动态规划–背包问题背包问题是一个非常典型的考察动态规划应用的题目，对其加上不同的限制和条件，可以衍生出诸多变种，这篇文章对背包问题在个人愚见的基础上进行简单总结。
+题目描述：一个小偷面前有一堆（n个）财宝，每个财宝有重量w和价值v两种属性，而他的背包只能携带一定重量的财宝（Capacity），在已知所有财宝的重量和价值的情况下，如何选取财宝，可以最大限度的利用当前的背包容量，取得最大价值的财宝（或</div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>&nbsp;2020-06-17
           </div>
         
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-category"></i>
             
-              <a href="/categories/hexo/">hexo</a>
+              <a href="/categories/algorithm/">algorithm</a>
+            
+              <a href="/categories/algorithm/dp/">dp</a>
+            
+              <a href="/categories/algorithm/dp/knapsack/">knapsack</a>
             
           </div>
         
@@ -237,7 +268,11 @@ Node.js</div>
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/hexo/">hexo</a>
+              <a href="/tags/dp/">dp</a>
+            
+              <a href="/tags/algorithm/">algorithm</a>
+            
+              <a href="/tags/knapsack/">knapsack</a>
             
           </div>
         
@@ -249,22 +284,110 @@ Node.js</div>
     
     
     <div class="col-12 col-md-12 mx-auto index-info">
-      <a class="index-header" href="/2020/05/13/mybatis/">mybatis</a>
+      <a class="index-header" href="/2020/06/14/dp/">dp</a>
 
-      <a href="/2020/05/13/mybatis/" class="index-excerpt">
+      <a href="/2020/06/14/dp/" class="index-excerpt">
         
         
           
         
-        <div>mybatis使用手册MyBatis 是一款优秀的持久层框架，它支持自定义 SQL、存储过程以及高级映射。MyBatis 免除了几乎所有的 JDBC 代码以及设置参数和获取结果集的工作。MyBatis 可以通过简单的 XML 或注解来配置和映射原始类型、接口和 Java POJO（Plain Old Java Objects，普通老式 Java 对象）为数据库中的记录。
-1.简单的测试
-创建数据库</div>
+        <div>动态规划Dynamic Programing前言看了fuck-algorithm的dp，竟然让我这个本科几乎没咋听课的学渣勾起了丝丝回忆，隐约记得0/1背包问题，剪枝啥的，具体的早已记不清了，只剩一个印象。只记得当时学的迷迷糊糊的，似懂非懂，其实就是不懂，但是算法还是让我产生了一点点兴趣，竟然让我这个本科对啥都提不起兴趣的渣渣（除了游戏）觉得有点意思，虽然上课没咋听，但是课后我应该还是看了一遍书，</div>
       </a>
 
       <div class="index-btm post-metas">
         
           <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>&nbsp;2020-05-13
+            <i class="iconfont icon-date"></i>&nbsp;2020-06-14
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/leetcode/">leetcode</a>
+            
+              <a href="/categories/leetcode/dp/">dp</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/leetcode/">leetcode</a>
+            
+              <a href="/tags/dp/">dp</a>
+            
+          </div>
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <div class="col-12 col-md-12 mx-auto index-info">
+      <a class="index-header" href="/2020/06/12/rabbitmq/">rabbitmq</a>
+
+      <a href="/2020/06/12/rabbitmq/" class="index-excerpt">
+        
+        
+          
+        
+        <div>rabbitmq新手入门学习rabbitmq官网
+参考博客
+1.MQ概念消息队列（Message Queue，简称MQ），从字面意思上看，本质是个队列，FIFO先入先出，只不过队列中存放的内容是message而已。其主要用途：不同进程Process/线程Thread之间通信
+为什么会产生消息队列？有几个原因：
+
+不同进程（process）之间传递消息时，两个进程之间耦合程度过高，改动一个进程，引发</div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>&nbsp;2020-06-12
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/rabbitmq/">rabbitmq</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/rabbitmq/">rabbitmq</a>
+            
+          </div>
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <div class="col-12 col-md-12 mx-auto index-info">
+      <a class="index-header" href="/2020/05/29/springboot/">springboot</a>
+
+      <a href="/2020/05/29/springboot/" class="index-excerpt">
+        
+        
+          
+        
+        <div>SpringBoot学习SpringBoot使得程序员摆脱了烦人的xml配置，而仅仅专注于业务代码的编写，极大地提高了开发的效率，这也是如今SpringBoot这么流行的原因。SpringBoot内置了一个轻量级的Tomcat，不需要再配置Tomcat，只需要运行Application类就行。懒得再写一步步怎么做，没啥意思，就写一些自己学到的和不足的地方。
+1.Spring bean创建在Spri</div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>&nbsp;2020-05-29
           </div>
         
         
@@ -273,7 +396,7 @@ Node.js</div>
             
               <a href="/categories/java/">java</a>
             
-              <a href="/categories/java/mabatis/">mabatis</a>
+              <a href="/categories/java/springboot/">springboot</a>
             
           </div>
         
@@ -281,7 +404,9 @@ Node.js</div>
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/mybatis/">mybatis</a>
+              <a href="/tags/java/">java</a>
+            
+              <a href="/tags/springboot/">springboot</a>
             
           </div>
         
@@ -289,7 +414,181 @@ Node.js</div>
     </div>
   </div>
 
+  <div class="row mx-auto index-card">
+    
+    
+    <div class="col-12 col-md-12 mx-auto index-info">
+      <a class="index-header" href="/2020/05/27/string/">string</a>
 
+      <a href="/2020/05/27/string/" class="index-excerpt">
+        
+        
+          
+        
+        <div>Leetcode-String1.无重复字符的最长子串(#3)
+题目描述： 给定一个字符串，请你找出其中不含有重复字符的 最长子串 的长度。示例：输入: “abcabcbb”输出: 3解释: 因为无重复字符的最长子串是 “abc”，所以其长度为 3。
+
+解法：求的是最长无重复字串，不是子序列，字串是连续的，子序列不一定连续。首先想到的应该是滑动窗口，双指针，快指针指向重复元素时，慢指针应该要指向该</div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>&nbsp;2020-05-27
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/leetcode/">leetcode</a>
+            
+              <a href="/categories/leetcode/string/">string</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/leetcode/">leetcode</a>
+            
+              <a href="/tags/string/">string</a>
+            
+          </div>
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <div class="col-12 col-md-12 mx-auto index-info">
+      <a class="index-header" href="/2020/05/27/javaguide/">JavaGuide学习笔记</a>
+
+      <a href="/2020/05/27/javaguide/" class="index-excerpt">
+        
+        
+          
+        
+        <div>JavaGuide学习笔记JavaGuide github地址
+一.基础1.JVM,JRE,JDK的区别Java 程序从源代码到运行一般有下面 3 步：我们需要格外注意的是 .class-&gt;机器码 这一步。在这一步 JVM 类加载器首先加载字节码文件，然后通过解释器逐行解释执行，这种方式的执行速度会相对比较慢。而且，有些方法和代码块是经常需要被调用的(也就是所谓的热点代码)，所以后面引进了 </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>&nbsp;2020-05-27
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/java/">java</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/java/">java</a>
+            
+          </div>
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <div class="col-12 col-md-12 mx-auto index-info">
+      <a class="index-header" href="/2020/05/25/xml/">web.xml配置说明</a>
+
+      <a href="/2020/05/25/xml/" class="index-excerpt">
+        
+        
+          
+        
+        <div>web.xml配置说明参考博客
+1.作用web.xml时=是JavaWeb中一个重要的配置文件，可以通过web.xml来配置servlet，filter，首页等。但它不是Javaweb所必需的。
+2.web.xml头部&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;web-app xmlns="http://xmlns.jcp.org/xml/ns</div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>&nbsp;2020-05-25
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/java/">java</a>
+            
+              <a href="/categories/java/xml/">xml</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/java/">java</a>
+            
+              <a href="/tags/xml/">xml</a>
+            
+          </div>
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <div class="col-12 col-md-12 mx-auto index-info">
+      <a class="index-header" href="/2020/05/19/encoding/">web中的字符编解码问题</a>
+
+      <a href="/2020/05/19/encoding/" class="index-excerpt">
+        
+        
+          
+        
+        <div>浅谈web中的字符编解码问题字符乱码问题对于程序员来说并不是一个陌生的问题，在web开发中经常会遇到表单post提交时中文字符乱码问题，但是对于新手可能却是一个令人头疼的问题。下面我结合自己的理解简单解释一下web中的字符编解码问题。
+1.编码和解码计算机中存储的信息都是二进制，而我们在屏幕上看到的英文、汉字等字符是二进制数转换之后的结果。通俗的说，按照何种规则将字符存储在计算机中，如’a’用什么</div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>&nbsp;2020-05-19
+          </div>
+        
+        
+        
+      </div>
+    </div>
+  </div>
+
+
+
+  <nav aria-label="navigation">
+    <span class="pagination" id="pagination">
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="iconfont icon-arrowright"></i></a>
+    </span>
+  </nav>
+  
+  <script>
+    for (ele of document.getElementById("pagination").getElementsByTagName("a")) {
+      ele.href += '#board';
+    }
+  </script>
 
 
 
@@ -380,7 +679,7 @@ Node.js</div>
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "Welcome!&nbsp;",
+        "Never too late to be better!&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 70,

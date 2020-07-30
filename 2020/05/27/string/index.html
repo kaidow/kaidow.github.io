@@ -1,0 +1,932 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  <title>string - Hexo</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+<link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_fmb4a04yx8h.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_pjno9b9zyxs.css">
+
+
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>BryantX</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/">
+              <i class="iconfont icon-home-fill"></i>
+              Home</a>
+          </li>
+        
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/archives/">
+              <i class="iconfont icon-archive-fill"></i>
+              Archives</a>
+          </li>
+        
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/categories/">
+              <i class="iconfont icon-category-fill"></i>
+              Categories</a>
+          </li>
+        
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/tags/">
+              <i class="iconfont icon-tags-fill"></i>
+              Tags</a>
+          </li>
+        
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/about/">
+              <i class="iconfont icon-user-fill"></i>
+              About</a>
+          </li>
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="view intro-2" id="background" parallax=true
+         style="background: url('/img/kobe.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              
+                <div class="mt-3 post-meta">
+                  <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+                  <time datetime="2020-05-27 20:44">
+                    May 27, 2020 pm
+                  </time>
+                </div>
+              
+
+              <div class="mt-1">
+                
+                  
+                  <span class="post-meta mr-2">
+                    <i class="iconfont icon-chart"></i>
+                    4.9k 字
+                  </span>
+                
+
+                
+                  
+                  <span class="post-meta mr-2">
+                      <i class="iconfont icon-clock-fill"></i>
+                    
+                    
+                    69
+                     分钟
+                  </span>
+                
+
+                
+              </div>
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <div class="post-content mx-auto" id="post">
+            
+            <article class="markdown-body">
+              <h1 id="Leetcode-String"><a href="#Leetcode-String" class="headerlink" title="Leetcode-String"></a>Leetcode-String</h1><h2 id="1-无重复字符的最长子串-3"><a href="#1-无重复字符的最长子串-3" class="headerlink" title="1.无重复字符的最长子串(#3)"></a>1.无重复字符的最长子串(#3)</h2><blockquote>
+<p>题目描述： 给定一个字符串，请你找出其中不含有重复字符的 最长子串 的长度。<br>示例：<br>输入: “abcabcbb”<br>输出: 3<br>解释: 因为无重复字符的最长子串是 “abc”，所以其长度为 3。</p>
+</blockquote>
+<p>解法：求的是最长无重复字串，不是子序列，字串是连续的，子序列不一定连续。首先想到的应该是滑动窗口，双指针，快指针指向重复元素时，慢指针应该要指向该元素上次出现的下一个位置，然后快指针再向后遍历，期间要保存长度的最大值。那么怎么判断重复以及快指针遍历过的元素索引该如何保存，这里有两种常见手法。一种就是用hashmap，快指针遍历时将元素以及对应索引存入map；另一种就是用数组。</p>
+<pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">lengthOfLongestSubstring</span><span class="hljs-params">(String s)</span></span>&#123;
+        <span class="hljs-keyword">if</span>(s.length()==<span class="hljs-number">0</span>||s==<span class="hljs-keyword">null</span>)&#123;
+            <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+        &#125;
+        <span class="hljs-keyword">int</span> ans=<span class="hljs-number">0</span>;
+        <span class="hljs-keyword">int</span>[] index=<span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[<span class="hljs-number">128</span>];<span class="hljs-comment">//ascii码一般为7位，也就是128个；扩展ascii为8位</span>
+        Arrays.fill(index,-<span class="hljs-number">1</span>);<span class="hljs-comment">//数组初始化全为-1，因为i可以为0</span>
+        <span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>,j=<span class="hljs-number">0</span>;
+        <span class="hljs-keyword">int</span> len=<span class="hljs-number">0</span>;
+        <span class="hljs-keyword">while</span>(j&lt;s.length())&#123;
+            <span class="hljs-keyword">char</span> c=s.charAt(j);
+            <span class="hljs-keyword">if</span>(index[c]&gt;=i)&#123; <span class="hljs-comment">//只要c上个元素的索引在窗口内，也就是[i,j)，c就是重复的</span>
+                i=index[c]+<span class="hljs-number">1</span>;
+                len=j-i;
+            &#125;
+            index[c]=j++;
+            len++;
+            ans=Math.max(ans,len);
+        &#125;
+        <span class="hljs-keyword">return</span> ans;
+    &#125;</code></pre>
+<h2 id="2-构建回文串检测"><a href="#2-构建回文串检测" class="headerlink" title="2.构建回文串检测"></a>2.构建回文串检测</h2><blockquote>
+<p>题目描述吧：给你一个字符串 s，请你对 s 的子串进行检测。每次检测，待检子串都可以表示为 queries[i] = [left, right, k]。我们可以重新排列子串 s[left], …, s[right]，并从中选择 最多 k 项替换成任何小写英文字母。 如果在上述检测过程中，子串可以变成回文形式的字符串，那么检测结果为 true，否则结果为 false。返回答案数组 answer[]，其中 answer[i] 是第 i 个待检子串 queries[i] 的检测结果。<br>注意：在替换时，子串中的每个字母都必须作为 独立的 项进行计数，也就是说，如果 s[left..right] = “aaa” 且 k = 2，我们只能替换其中的两个字母。（另外，任何检测都不会修改原始字符串 s，可以认为每次检测都是独立的）<br>示例：<br>输入：s = “abcda”, queries = [[3,3,0],[1,2,0],[0,3,1],[0,3,2],[0,4,1]]<br>输出：[true,false,false,true,true]<br>解释：<br>queries[0] : 子串 = “d”，回文。<br>queries[1] : 子串 = “bc”，不是回文。<br>queries[2] : 子串 = “abcd”，只替换 1 个字符是变不成回文串的。<br>queries[3] : 子串 = “abcd”，可以变成回文的 “abba”。 也可以变成 “baab”，先重新排序变成 “bacd”，然后把 “cd” 替换为 “ab”。<br>queries[4] : 子串 = “abcda”，可以变成回文的 “abcba”。</p>
+</blockquote>
+<p>思路：字串是可以重新排列的，这很关键。因为可以重新排列，所以只需要关心字串各个字符出现的次数就行，出现次数为奇数（实际上应该为1）的字符要小于等于1。修改一次可以消灭掉两个字符，比如abc出现次数为1的字符有3个，你把c改成a，那就只剩下1个b。那么这个问题的关键就在于子字符串字符出现次数的计算。</p>
+<p>法一：暴力法超时</p>
+<pre><code class="hljs java"><span class="hljs-keyword">int</span> len=queries.length;
+       List&lt;Boolean&gt; ans=<span class="hljs-keyword">new</span> ArrayList&lt;&gt;();
+       <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;len;i++)&#123;
+           <span class="hljs-keyword">int</span> left=queries[i][<span class="hljs-number">0</span>];
+           <span class="hljs-keyword">int</span> right=queries[i][<span class="hljs-number">1</span>];
+           <span class="hljs-keyword">int</span> k=queries[i][<span class="hljs-number">2</span>];
+           ans.add(isPalindrome(s,left,right,k));
+       &#125;
+       <span class="hljs-keyword">return</span> ans;
+   &#125;
+
+   <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">isPalindrome</span><span class="hljs-params">(String s,<span class="hljs-keyword">int</span> left,<span class="hljs-keyword">int</span> right,<span class="hljs-keyword">int</span> k)</span></span>&#123;
+       String substring=s.substring(left,right+<span class="hljs-number">1</span>);
+       <span class="hljs-keyword">int</span>[] alpha=<span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[<span class="hljs-number">26</span>];
+       <span class="hljs-keyword">for</span>(<span class="hljs-keyword">char</span> c:substring.toCharArray())&#123;
+           alpha[c-<span class="hljs-number">97</span>]++;
+       &#125;
+       <span class="hljs-keyword">int</span> odds=<span class="hljs-number">0</span>;
+       <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;<span class="hljs-number">26</span>;i++)&#123;
+           <span class="hljs-keyword">if</span>(alpha[i]%<span class="hljs-number">2</span>==<span class="hljs-number">1</span>)&#123;
+               odds++;
+           &#125;
+       &#125;
+       <span class="hljs-keyword">return</span> odds-k*<span class="hljs-number">2</span>&lt;=<span class="hljs-number">1</span>;
+   &#125;</code></pre>
+<p>法二：将从第一个字符开始的子字符串中各个字符的出现次数都保存在一个二维数组中，中间的子字符串其实也就是两个字串的相减，大大减少了计算的次数。</p>
+<pre><code class="hljs java"><span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span>[][] cnt;
+   <span class="hljs-function"><span class="hljs-keyword">public</span> List&lt;Boolean&gt; <span class="hljs-title">canMakePaliQueries</span><span class="hljs-params">(String s, <span class="hljs-keyword">int</span>[][] queries)</span> </span>&#123;
+       <span class="hljs-keyword">int</span> len=queries.length;
+       count(s);
+       List&lt;Boolean&gt; ans=<span class="hljs-keyword">new</span> ArrayList&lt;&gt;();
+       <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;len;i++)&#123;
+           <span class="hljs-keyword">int</span> left=queries[i][<span class="hljs-number">0</span>];
+           <span class="hljs-keyword">int</span> right=queries[i][<span class="hljs-number">1</span>];
+           <span class="hljs-keyword">int</span> k=queries[i][<span class="hljs-number">2</span>];
+           <span class="hljs-keyword">int</span> odds=<span class="hljs-number">0</span>;
+           <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j=<span class="hljs-number">0</span>;j&lt;<span class="hljs-number">26</span>;j++)&#123;
+                <span class="hljs-keyword">if</span>((cnt[right+<span class="hljs-number">1</span>][j]-cnt[left][j])%<span class="hljs-number">2</span>==<span class="hljs-number">1</span>)&#123;
+                    odds++;
+                &#125;  
+           &#125;
+           ans.add(odds/<span class="hljs-number">2</span>&lt;=k);
+       &#125;
+       <span class="hljs-keyword">return</span> ans;
+   &#125;
+
+   <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">count</span><span class="hljs-params">(String s)</span></span>&#123;
+       <span class="hljs-keyword">int</span> n=s.length();
+       cnt=<span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[n+<span class="hljs-number">1</span>][<span class="hljs-number">26</span>];
+       <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;n;i++)&#123;
+           System.arraycopy(cnt[i],<span class="hljs-number">0</span>,cnt[i+<span class="hljs-number">1</span>],<span class="hljs-number">0</span>,<span class="hljs-number">26</span>);
+           cnt[i+<span class="hljs-number">1</span>][s.charAt(i)-<span class="hljs-string">'a'</span>]++;
+       &#125;
+   &#125;</code></pre>
+<h2 id="3-翻转字符串里的单词"><a href="#3-翻转字符串里的单词" class="headerlink" title="3. 翻转字符串里的单词"></a>3. 翻转字符串里的单词</h2><blockquote>
+<p>示例：<br>输入: “  hello world!  “<br>输出: “world! hello”<br>解释: 输入字符串可以在前面或者后面包含多余的空格，但是反转后的字符不能包括。</p>
+</blockquote>
+<p>法一：这个方法竟然速度最快，有点不是很懂</p>
+<pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">reverseWords2</span><span class="hljs-params">(String s)</span></span>&#123;
+        StringBuilder sb=<span class="hljs-keyword">new</span> StringBuilder();
+        s=s.trim();
+        String[] strs=s.split(<span class="hljs-string">" "</span>);
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=strs.length-<span class="hljs-number">1</span>;i&gt;<span class="hljs-number">0</span>;i--)&#123;
+            <span class="hljs-keyword">if</span>(strs[i].length()==<span class="hljs-number">0</span>)&#123;
+                <span class="hljs-keyword">continue</span>;
+            &#125;
+            sb.append(strs[i]+<span class="hljs-string">" "</span>);
+        &#125;
+        sb.append(strs[<span class="hljs-number">0</span>].trim());
+        <span class="hljs-keyword">return</span> sb.toString();
+    &#125;</code></pre>
+<p>法二：用api,\s匹配空格</p>
+<pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">reverseWords</span><span class="hljs-params">(String s)</span></span>&#123;
+        s=s.trim();
+        List&lt;String&gt; strs= Arrays.asList(s.split(<span class="hljs-string">"\\s+"</span>));
+        Collections.reverse(strs);
+        <span class="hljs-keyword">return</span> String.join(<span class="hljs-string">" "</span>,strs);
+    &#125;</code></pre>
+<p>法三：先将整个字符串reverse，然后价格分隔后的每个字符串再reverse，不想写</p>
+<h2 id="4-最长特殊特殊序列II（-522）"><a href="#4-最长特殊特殊序列II（-522）" class="headerlink" title="4.最长特殊特殊序列II（#522）"></a>4.最长特殊特殊序列II（#522）</h2><blockquote>
+<p>题目描述：给定字符串列表，你需要从它们中找出最长的特殊序列。最长特殊序列定义如下：该序列为某字符串独有的最长子序列（即不能是其他字符串的子序列）。<br>子序列可以通过删去字符串中的某些字符实现，但不能改变剩余字符的相对顺序。空序列为所有字符串的子序列，任何字符串为其自身的子序列。<br>输入将是一个字符串列表，输出是最长特殊序列的长度。如果最长特殊序列不存在，返回 -1 。<br>示例：<br>输入: “aba”, “cdc”, “eae”<br>输出: 3</p>
+</blockquote>
+<p>思路：我第一个想到的就是先将数组按照字符串的长度递减排序，然后找出相同长度中不重复的那个字符串，所以我想到用set，只要有重复字符串，结果置为-1，否则就是当前字符串长度，这样set中字符串要按照字典顺序排一下，写完提交发现不对，因为{“aaa”,”aaa”,”aa”}这样不对。<br>错解</p>
+<pre><code class="hljs java"> <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">findLUSlength</span><span class="hljs-params">(String[] strs)</span> </span>&#123;
+Arrays.sort(strs, <span class="hljs-keyword">new</span> Comparator&lt;String&gt;() &#123;
+            <span class="hljs-meta">@Override</span>
+            <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">compare</span><span class="hljs-params">(String o1, String o2)</span> </span>&#123;
+                <span class="hljs-keyword">if</span>(o1.length()==o2.length())&#123;
+                    <span class="hljs-keyword">return</span> o1.compareTo(o2);
+                &#125;<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(o1.length()&lt;o2.length())&#123;
+                    <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;
+                &#125;<span class="hljs-keyword">else</span>&#123;
+                    <span class="hljs-keyword">return</span> -<span class="hljs-number">1</span>;
+                &#125;
+            &#125;
+        &#125;);
+        <span class="hljs-keyword">int</span> ans=-<span class="hljs-number">1</span>;
+        Set&lt;String&gt; stringSet=<span class="hljs-keyword">new</span> HashSet&lt;&gt;();
+        <span class="hljs-keyword">for</span>(String s:strs)&#123;
+            <span class="hljs-keyword">if</span>(s.length()&lt;ans)&#123;
+                <span class="hljs-keyword">return</span> ans;
+            &#125;
+            <span class="hljs-keyword">if</span>(stringSet.contains(s))&#123;
+                ans=-<span class="hljs-number">1</span>;
+                <span class="hljs-keyword">continue</span>;
+            &#125;
+            ans=s.length();
+            stringSet.add(s);
+        &#125;
+        <span class="hljs-keyword">return</span> ans;
+    &#125;</code></pre>
+<p>正解：</p>
+<pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">findLUSlength</span><span class="hljs-params">(String[] strs)</span></span>&#123;
+        <span class="hljs-comment">//对字符串数组按照长度递减排序</span>
+        Arrays.sort(strs, <span class="hljs-keyword">new</span> Comparator&lt;String&gt;() &#123;
+            <span class="hljs-meta">@Override</span>
+            <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">compare</span><span class="hljs-params">(String o1, String o2)</span> </span>&#123;
+                <span class="hljs-keyword">return</span> o2.length()-o1.length();
+
+            &#125;
+        &#125;);
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;strs.length;i++)&#123;
+            <span class="hljs-keyword">boolean</span> flag=<span class="hljs-keyword">true</span>;
+            <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j=<span class="hljs-number">0</span>;j&lt;strs.length;j++)&#123;
+                <span class="hljs-keyword">if</span>(i==j)&#123;
+                    <span class="hljs-keyword">continue</span>;
+                &#125;
+                <span class="hljs-keyword">if</span>(isSubSequence(strs[i],strs[j]))&#123;
+                    flag=<span class="hljs-keyword">false</span>;
+                    <span class="hljs-keyword">break</span>;
+                &#125;
+            &#125;
+            <span class="hljs-keyword">if</span>(flag)&#123;
+                <span class="hljs-keyword">return</span> strs[i].length();
+            &#125;
+        &#125;
+        <span class="hljs-keyword">return</span> -<span class="hljs-number">1</span>;
+    &#125;
+
+    <span class="hljs-comment">//判断是s1是否为s2的子序列</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">isSubSequence</span><span class="hljs-params">(String s1,String s2)</span></span>&#123;
+        <span class="hljs-keyword">int</span> j=<span class="hljs-number">0</span>;
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;s2.length()&amp;&amp;j&lt;s1.length();i++)&#123;
+            <span class="hljs-keyword">if</span>(s1.charAt(j)==s2.charAt(i))&#123;
+                j++;
+            &#125;
+        &#125;
+        <span class="hljs-keyword">return</span> j==s1.length();
+    &#125;</code></pre>
+<h2 id="5-验证ip地址（-468）"><a href="#5-验证ip地址（-468）" class="headerlink" title="5.验证ip地址（#468）"></a>5.验证ip地址（#468）</h2><blockquote>
+<p>题目描述：编写一个函数来验证输入的字符串是否是有效的 IPv4 或 IPv6 地址。<br>IPv4 地址由十进制数和点来表示，每个地址包含4个十进制数，其范围为 0 - 255， 用(“.”)分割。比如，172.16.254.1；<br>同时，IPv4 地址内的数不会以 0 开头。比如，地址 172.16.254.01 是不合法的。<br>IPv6 地址由8组16进制的数字来表示，每组表示 16 比特。这些组数字通过 (“:”)分割。比如,  2001:0db8:85a3:0000:0000:8a2e:0370:7334 是一个有效的地址。而且，我们可以加入一些以 0 开头的数字，字母可以使用大写，也可以是小写。所以， 2001:db8:85a3:0:0:8A2E:0370:7334 也是一个有效的 IPv6 address地址 (即，忽略 0 开头，忽略大小写)。<br>然而，我们不能因为某个组的值为 0，而使用一个空的组，以至于出现 (::) 的情况。 比如， 2001:0db8:85a3::8A2E:0370:7334 是无效的 IPv6 地址。<br>同时，在 IPv6 地址中，多余的 0 也是不被允许的。比如， 02001:0db8:85a3:0000:0000:8a2e:0370:7334 是无效的。</p>
+</blockquote>
+<p>解法：分治法（其实就是最自然的想法，把IP地址按点或分号分割，再进行验证）</p>
+<pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">validIPAddress</span><span class="hljs-params">(String IP)</span></span>&#123;
+        <span class="hljs-keyword">if</span> (IP.chars().filter(ch -&gt; ch == <span class="hljs-string">'.'</span>).count() == <span class="hljs-number">3</span>) &#123;<span class="hljs-comment">//字符串中点的数量为3</span>
+            <span class="hljs-keyword">return</span> validIPv4(IP);
+        &#125;
+        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (IP.chars().filter(ch -&gt; ch == <span class="hljs-string">':'</span>).count() == <span class="hljs-number">7</span>) &#123;
+            <span class="hljs-keyword">return</span> validIPv6(IP);
+        &#125;
+        <span class="hljs-keyword">else</span> <span class="hljs-keyword">return</span> <span class="hljs-string">"Neither"</span>;
+
+    &#125;
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">validIPv4</span><span class="hljs-params">(String ip)</span></span>&#123;
+
+        String[] strs=ip.split(<span class="hljs-string">"\\."</span>,-<span class="hljs-number">1</span>);<span class="hljs-comment">//limit参数表示模式匹配的次数，limit&gt;0则分割limit-1次；limit为0，分割任意次，但是结尾空字符串丢弃；limit为-1，分割任意次，长度任意</span>
+   
+        <span class="hljs-keyword">for</span>(String s:strs)&#123;
+            <span class="hljs-keyword">if</span>(s.length()==<span class="hljs-number">0</span>||s.length()&gt;<span class="hljs-number">3</span>)&#123;
+                <span class="hljs-keyword">return</span> <span class="hljs-string">"Neither"</span>;
+            &#125;
+            <span class="hljs-keyword">if</span>(s.startsWith(<span class="hljs-string">"0"</span>)&amp;&amp;s.length()&gt;<span class="hljs-number">1</span>)&#123;
+                <span class="hljs-keyword">return</span> <span class="hljs-string">"Neither"</span>;
+            &#125;
+            <span class="hljs-keyword">char</span>[] cs=s.toCharArray();
+            <span class="hljs-keyword">for</span>(<span class="hljs-keyword">char</span> c:cs)&#123;
+                <span class="hljs-keyword">if</span>(!Character.isDigit(c))&#123;
+                    <span class="hljs-keyword">return</span> <span class="hljs-string">"Neither"</span>;
+                &#125;
+            &#125;
+            <span class="hljs-keyword">int</span> tmp=Integer.parseInt(s);
+            <span class="hljs-keyword">if</span>(tmp&gt;<span class="hljs-number">255</span>)&#123;
+                <span class="hljs-keyword">return</span> <span class="hljs-string">"Neither"</span>;
+            &#125;
+        &#125;
+        <span class="hljs-keyword">return</span> <span class="hljs-string">"IPv4"</span>;
+    &#125;
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">validIPv6</span><span class="hljs-params">(String ip)</span></span>&#123;
+        String[] strs=ip.split(<span class="hljs-string">":"</span>,-<span class="hljs-number">1</span>);
+        <span class="hljs-keyword">for</span>(String s:strs)&#123;
+            <span class="hljs-keyword">if</span>(s.length()==<span class="hljs-number">0</span>||s.length()&gt;<span class="hljs-number">4</span>)&#123;
+                <span class="hljs-keyword">return</span> <span class="hljs-string">"Neither"</span>;
+            &#125;
+            <span class="hljs-keyword">char</span>[] cs=s.toCharArray();
+            <span class="hljs-keyword">for</span>(<span class="hljs-keyword">char</span> c:cs)&#123;
+                <span class="hljs-keyword">if</span>(c&lt;<span class="hljs-number">48</span>||(c&gt;<span class="hljs-number">57</span>&amp;&amp;c&lt;<span class="hljs-number">65</span>)||(c&gt;<span class="hljs-number">70</span>&amp;&amp;c&lt;<span class="hljs-number">97</span>)||c&gt;<span class="hljs-number">102</span>)&#123;
+                    <span class="hljs-keyword">return</span> <span class="hljs-string">"Neither"</span>;
+                &#125;
+            &#125;
+        &#125;
+        <span class="hljs-keyword">return</span> <span class="hljs-string">"IPv6"</span>;
+    &#125;</code></pre>
+<h2 id="6-字符串相加（-415）"><a href="#6-字符串相加（-415）" class="headerlink" title="6.字符串相加（#415）"></a>6.字符串相加（#415）</h2><blockquote>
+<p>题目描述：给定两个字符串形式的非负整数 num1 和num2 ，计算它们的和。注意：<br>num1 和num2 的长度都小于 5100.<br>num1 和num2 都只包含数字 0-9.<br>num1 和num2 都不包含任何前导零。<br>你不能使用任何內建 BigInteger 库， 也不能直接将输入的字符串转换为整数形式。</p>
+</blockquote>
+<p>题解：双指针，从字符串末尾转化为int相加，结果append到stringbuilder中，最后在reverse一下</p>
+<pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">addStrings</span><span class="hljs-params">(String num1, String num2)</span> </span>&#123;
+       <span class="hljs-keyword">int</span> len1=num1.length();
+       <span class="hljs-keyword">int</span> len2=num2.length();
+       <span class="hljs-keyword">int</span> i=len1-<span class="hljs-number">1</span>,j=len2-<span class="hljs-number">1</span>,carry=<span class="hljs-number">0</span>;
+       StringBuilder ans=<span class="hljs-keyword">new</span> StringBuilder();
+       <span class="hljs-keyword">while</span>(i&gt;=<span class="hljs-number">0</span>||j&gt;=<span class="hljs-number">0</span>)&#123;
+           <span class="hljs-keyword">int</span> bit1=i&gt;=<span class="hljs-number">0</span>?num1.charAt(i)-<span class="hljs-string">'0'</span>:<span class="hljs-number">0</span>;
+           <span class="hljs-keyword">int</span> bit2=j&gt;=<span class="hljs-number">0</span>?(<span class="hljs-keyword">int</span>)num2.charAt(j)-<span class="hljs-string">'0'</span>:<span class="hljs-number">0</span>;
+           <span class="hljs-keyword">int</span> res=(bit1+bit2+carry)%<span class="hljs-number">10</span>;
+            carry=(bit1+bit2+carry)/<span class="hljs-number">10</span>;
+           ans.append(res);
+           i--;
+           j--;
+       &#125;
+       <span class="hljs-keyword">if</span>(carry==<span class="hljs-number">1</span>)&#123;
+           ans.append(<span class="hljs-number">1</span>);
+       &#125;
+       <span class="hljs-keyword">return</span> ans.reverse().toString();
+   &#125;</code></pre>
+<h2 id="7-括号生成-22"><a href="#7-括号生成-22" class="headerlink" title="7.括号生成(#22)"></a>7.括号生成(#22)</h2><blockquote>
+<p>题目描述：<br>数字 n 代表生成括号的对数，请你设计一个函数，用于能够生成所有可能的并且 有效的 括号组合。<br>示例：<br>输入：n = 3<br>输出：[<br>       “((()))”,<br>       “(()())”,<br>       “(())()”,<br>       “()(())”,<br>       “()()()”<br>     ]</p>
+</blockquote>
+<p>题解：递归回溯</p>
+<pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> List&lt;String&gt; <span class="hljs-title">generateParenthesis</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n)</span> </span>&#123;
+       List&lt;String&gt; ans = <span class="hljs-keyword">new</span> ArrayList();
+       backtrack(ans, <span class="hljs-keyword">new</span> StringBuilder(), <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, n);
+       <span class="hljs-keyword">return</span> ans;
+   &#125;
+
+   <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">backtrack</span><span class="hljs-params">(List&lt;String&gt; ans, StringBuilder cur, <span class="hljs-keyword">int</span> open, <span class="hljs-keyword">int</span> close, <span class="hljs-keyword">int</span> max)</span></span>&#123;
+       <span class="hljs-keyword">if</span> (cur.length() == max * <span class="hljs-number">2</span>) &#123;
+           ans.add(cur.toString());
+           <span class="hljs-keyword">return</span>;
+       &#125;
+
+       <span class="hljs-keyword">if</span> (open &lt; max) &#123;
+           cur.append(<span class="hljs-string">'('</span>);
+           backtrack(ans, cur, open+<span class="hljs-number">1</span>, close, max);
+           cur.deleteCharAt(cur.length() - <span class="hljs-number">1</span>);
+       &#125;
+       <span class="hljs-keyword">if</span> (close &lt; open) &#123;
+           cur.append(<span class="hljs-string">')'</span>);
+           backtrack(ans, cur, open, close+<span class="hljs-number">1</span>, max);
+           cur.deleteCharAt(cur.length() - <span class="hljs-number">1</span>);
+       &#125;
+   &#125;</code></pre>
+<h2 id="8-多次搜索"><a href="#8-多次搜索" class="headerlink" title="8.多次搜索"></a>8.多次搜索</h2><blockquote>
+<p>题目描述：<br>给定一个较长字符串big和一个包含较短字符串的数组smalls，设计一个方法，根据smalls中的每一个较短字符串，对big进行搜索。输出smalls中的字符串在big里出现的所有位置positions，其中positions[i]为smalls[i]出现的所有位置。<br>示例：<br>输入：<br>big = “mississippi”<br>smalls = [“is”,”ppi”,”hi”,”sis”,”i”,”ssippi”]<br>输出： [[1,4],[8],[],[3],[1,4,7,10],[5]]</p>
+</blockquote>
+<p>题解：字典树匹配前缀，先将字符串中所有字符加入字典树中，然后用大字符串去匹配</p>
+<pre><code class="hljs java"><span class="hljs-comment">//字典树节点结构，主要就是用26个子节点数组代表26个字母</span>
+ <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Node</span></span>&#123;
+        <span class="hljs-keyword">int</span> id;
+        <span class="hljs-keyword">boolean</span> isLeaf;
+        Node[] nodes;
+
+        <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">Node</span><span class="hljs-params">()</span> </span>&#123;
+            <span class="hljs-keyword">this</span>.id = -<span class="hljs-number">1</span>;
+            <span class="hljs-keyword">this</span>.isLeaf = <span class="hljs-keyword">false</span>;
+            <span class="hljs-keyword">this</span>.nodes = <span class="hljs-keyword">new</span> Node[<span class="hljs-number">26</span>];
+        &#125;
+    &#125;
+    <span class="hljs-keyword">private</span> Node root;
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span>[][] multiSearch(String big,String[] smalls)&#123;
+        root=<span class="hljs-keyword">new</span> Node();<span class="hljs-comment">//初始化根节点</span>
+        <span class="hljs-keyword">int</span> len=smalls.length;
+        List&lt;Integer&gt;[] lists=<span class="hljs-keyword">new</span> List[len];<span class="hljs-comment">//list数组</span>
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;len;i++)&#123;
+            lists[i]=<span class="hljs-keyword">new</span> ArrayList&lt;&gt;();
+        &#125;
+        Node p=root;
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;smalls.length;i++)&#123;
+            insertNode(smalls[i],i);<span class="hljs-comment">//将smalls数组中的字符串插入字典树中</span>
+        &#125;
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;big.length();i++)&#123;
+           match(big,i,p,lists);<span class="hljs-comment">//将big的所有前缀与字典树中的前缀进行匹配</span>
+        &#125;
+        <span class="hljs-keyword">int</span>[][] ans=<span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[len][];<span class="hljs-comment">//将list数组转化为二维数组</span>
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;len;i++)&#123;
+            ans[i]=<span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[lists[i].size()];
+            <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j=<span class="hljs-number">0</span>;j&lt;lists[i].size();j++)&#123;
+                ans[i][j]=lists[i].get(j);
+            &#125;
+        &#125;
+        <span class="hljs-keyword">return</span> ans;
+     &#125;
+
+     <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">match</span><span class="hljs-params">(String big,<span class="hljs-keyword">int</span> begin,Node root,List&lt;Integer&gt;[] lists)</span></span>&#123;
+        <span class="hljs-keyword">char</span>[] cs=big.substring(begin,big.length()).toCharArray();
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;cs.length;i++)&#123;
+            <span class="hljs-keyword">char</span> c=cs[i];
+            <span class="hljs-keyword">if</span>(root.nodes[c-<span class="hljs-string">'a'</span>]==<span class="hljs-keyword">null</span>)&#123;<span class="hljs-comment">//节点为空代表匹配失败</span>
+                <span class="hljs-keyword">return</span> ;
+            &#125;<span class="hljs-keyword">else</span>&#123;
+                root=root.nodes[c-<span class="hljs-string">'a'</span>];
+                <span class="hljs-keyword">if</span>(root.isLeaf)&#123;
+                    lists[root.id].add(begin);
+                &#125;
+            &#125;
+        &#125;
+        <span class="hljs-keyword">return</span>;
+     &#125;
+
+     <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">insertNode</span><span class="hljs-params">(String prefix,<span class="hljs-keyword">int</span> id)</span></span>&#123;
+        Node p=root;
+        <span class="hljs-keyword">char</span>[] cs=prefix.toCharArray();
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;cs.length;i++)&#123;
+            <span class="hljs-keyword">char</span> c=cs[i];
+            <span class="hljs-keyword">if</span>(p.nodes[c-<span class="hljs-string">'a'</span>]==<span class="hljs-keyword">null</span>)&#123;
+                p.nodes[c-<span class="hljs-string">'a'</span>]=<span class="hljs-keyword">new</span> Node();
+            &#125;
+            p=p.nodes[c-<span class="hljs-string">'a'</span>];
+        &#125;
+        p.isLeaf=<span class="hljs-keyword">true</span>;<span class="hljs-comment">//叶节点</span>
+        p.id=id;<span class="hljs-comment">//叶节点id为smalls对应字符串下标</span>
+     &#125;</code></pre>
+<h2 id="9-元音拼写检查器-966"><a href="#9-元音拼写检查器-966" class="headerlink" title="9.元音拼写检查器(#966)"></a>9.元音拼写检查器(#966)</h2><blockquote>
+<p>题目描述：<br>在给定单词列表 wordlist 的情况下，我们希望实现一个拼写检查器，将查询单词转换为正确的单词。<br>对于给定的查询单词 query，拼写检查器将会处理两类拼写错误：<br>大小写：如果查询匹配单词列表中的某个单词（不区分大小写），则返回的正确单词与单词列表中的大小写相同。<br>例如：wordlist = [“yellow”], query = “YellOw”: correct = “yellow”<br>例如：wordlist = [“Yellow”], query = “yellow”: correct = “Yellow”<br>例如：wordlist = [“yellow”], query = “yellow”: correct = “yellow”<br>元音错误：如果在将查询单词中的元音（‘a’、‘e’、‘i’、‘o’、‘u’）分别替换为任何元音后，能与单词列表中的单词匹配（不区分大小写），则返回的正确单词与单词列表中的匹配项大小写相同。<br>例如：wordlist = [“YellOw”], query = “yollow”: correct = “YellOw”<br>例如：wordlist = [“YellOw”], query = “yeellow”: correct = “” （无匹配项）<br>例如：wordlist = [“YellOw”], query = “yllw”: correct = “” （无匹配项）<br>此外，拼写检查器还按照以下优先级规则操作：<br>当查询完全匹配单词列表中的某个单词（区分大小写）时，应返回相同的单词。<br>当查询匹配到大小写问题的单词时，您应该返回单词列表中的第一个这样的匹配项。<br>当查询匹配到元音错误的单词时，您应该返回单词列表中的第一个这样的匹配项。<br>如果该查询在单词列表中没有匹配项，则应返回空字符串。<br>给出一些查询 queries，返回一个单词列表 answer，其中 answer[i] 是由查询 query = queries[i] 得到的正确单词。<br>示例：<br>输入：wordlist = [“KiTe”,”kite”,”hare”,”Hare”], queries = [“kite”,”Kite”,”KiTe”,”Hare”,”HARE”,”Hear”,”hear”,”keti”,”keet”,”keto”]<br>输出：[“kite”,”KiTe”,”KiTe”,”Hare”,”hare”,””,””,”KiTe”,””,”KiTe”]</p>
+</blockquote>
+<p>题解：首先想到的就是暴力解法，对每一个查询的单词去检查，但是有一个很长的用例没有通过不知道为什么，感觉逻辑上没啥问题</p>
+<pre><code class="hljs java"><span class="hljs-keyword">public</span> String[] spellchecker(String[] wordlist, String[] queries) &#123;
+       <span class="hljs-keyword">int</span> len=queries.length;
+       String[] ans=<span class="hljs-keyword">new</span> String[len];
+       <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;len;i++)&#123;
+           ans[i]=check(wordlist, queries[i]);
+       &#125;
+       <span class="hljs-keyword">return</span> ans;
+   &#125;
+
+   <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">check</span><span class="hljs-params">(String[] wordlist,String query)</span></span>&#123;
+       String ans=<span class="hljs-string">""</span>;
+       <span class="hljs-keyword">boolean</span> isFirst=<span class="hljs-keyword">true</span>;
+       <span class="hljs-keyword">for</span>(String str:wordlist)&#123;
+           <span class="hljs-keyword">if</span>(str.equals(query))&#123;
+               <span class="hljs-keyword">return</span> str;
+           &#125;
+           <span class="hljs-keyword">if</span>(isFirst)&#123;
+               <span class="hljs-keyword">if</span>(str.equalsIgnoreCase(query)||equalsAfterReplaceVowel(str,query))&#123;
+                   ans=str;
+                   isFirst=<span class="hljs-keyword">false</span>;
+               &#125;
+           &#125;
+       &#125;
+       <span class="hljs-keyword">return</span> ans;
+   &#125;
+
+   <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">equalsAfterReplaceVowel</span><span class="hljs-params">(String s1,String s2)</span></span>&#123;
+       <span class="hljs-keyword">if</span>(s1.length()!=s2.length())&#123;
+           <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;
+       &#125;
+       <span class="hljs-keyword">int</span> len=s1.length();
+       String vowel=<span class="hljs-string">"aeiou"</span>;
+       <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;len;i++)&#123;
+           <span class="hljs-keyword">char</span> c1=s1.charAt(i);
+           <span class="hljs-keyword">char</span> c2=s2.charAt(i);
+           <span class="hljs-keyword">if</span>(c1!=c2&amp;&amp;Math.abs(c1-c2)!=<span class="hljs-number">32</span>)&#123;
+               <span class="hljs-keyword">if</span>((vowel.indexOf(c1)!=-<span class="hljs-number">1</span>&amp;&amp;vowel.indexOf(c2)!=-<span class="hljs-number">1</span>))&#123;
+                   <span class="hljs-keyword">continue</span>;
+               &#125;
+               <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;
+           &#125;
+
+       &#125;
+       <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;
+   &#125;</code></pre>
+<p>既然此路不通，那只能另辟蹊径，下面的解法就是先将wordslist中的每一个word的原本字符串，小写字符串以及元音转化后的字符串以及对应索引分别加入到map中，然后对要查询的单词去三个map中匹配，妙啊！</p>
+<pre><code class="hljs java"><span class="hljs-keyword">public</span> String[] spellchecker(String[] wordslist,String[] queries)&#123;
+        <span class="hljs-keyword">int</span> len1=wordslist.length;
+        <span class="hljs-keyword">int</span> len2=queries.length;
+
+        Map&lt;String,Integer&gt; word_perfect=<span class="hljs-keyword">new</span> HashMap&lt;&gt;();<span class="hljs-comment">//放原本字符串</span>
+        Map&lt;String,Integer&gt; word_lowercase=<span class="hljs-keyword">new</span> HashMap&lt;&gt;();<span class="hljs-comment">//放转化为小写后的字符串</span>
+        Map&lt;String,Integer&gt; word_vowel=<span class="hljs-keyword">new</span> HashMap&lt;&gt;();<span class="hljs-comment">//放元音转化后的字符串</span>
+
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=len1-<span class="hljs-number">1</span>;i&gt;=<span class="hljs-number">0</span>;i--)&#123;<span class="hljs-comment">//注意：这里是逆序，为什么是逆序呢，难道正序不行么？是的，正序不行，因为对于转化为小写字母后相等的单词，如果正序，后面的会将前面的索引给覆盖掉，这样后面取到的就不是第一个匹配的索引了</span>
+            String word=wordslist[i];
+            word_perfect.put(word,i);
+
+            String word_lower=word.toLowerCase();
+            word_lowercase.put(word_lower,i);
+
+            String word_convert=convert(word);<span class="hljs-comment">//这里是将转化为小写字母后的字符串进行元音转化，这样其他字母就不用判断大小写，元音转化也不用考虑大小写</span>
+            word_vowel.put(word_convert,i);
+        &#125;
+
+        String[] ans=<span class="hljs-keyword">new</span> String[len2];
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;queries.length;i++)&#123;
+            String query=queries[i];
+            <span class="hljs-keyword">if</span>(<span class="hljs-keyword">null</span>!=word_perfect.get(query))&#123;
+                ans[i]=query;
+                <span class="hljs-keyword">continue</span>;
+            &#125;
+            String lowercase=query.toLowerCase();
+            Integer index_lower=word_lowercase.get(lowercase);
+            <span class="hljs-keyword">if</span>(<span class="hljs-keyword">null</span>!=index_lower)&#123;
+                ans[i]=wordslist[index_lower];
+                <span class="hljs-keyword">continue</span>;
+            &#125;
+            Integer index_vowel=word_vowel.get(convert(query));
+            <span class="hljs-keyword">if</span>(<span class="hljs-keyword">null</span>!=index_vowel)&#123;
+                ans[i]=wordslist[index_vowel];
+                <span class="hljs-keyword">continue</span>;
+            &#125;
+            ans[i]=<span class="hljs-string">""</span>;
+        &#125;
+        <span class="hljs-keyword">return</span> ans;
+    &#125;
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">convert</span><span class="hljs-params">(String s)</span></span>&#123;
+        <span class="hljs-keyword">char</span>[] cs=s.toCharArray();
+        String vowel=<span class="hljs-string">"aeiou"</span>;
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;cs.length;i++)&#123;
+            <span class="hljs-keyword">if</span>(vowel.indexOf(cs[i])!=-<span class="hljs-number">1</span>)&#123;
+                cs[i]=<span class="hljs-string">'#'</span>;
+            &#125;
+        &#125;
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> String(cs);
+    &#125;</code></pre>
+<h2 id="10-删除子文件夹（-1233）"><a href="#10-删除子文件夹（-1233）" class="headerlink" title="10.删除子文件夹（#1233）"></a>10.删除子文件夹（#1233）</h2><blockquote>
+<p>题目描述：你是一位系统管理员，手里有一份文件夹列表 folder，你的任务是要删除该列表中的所有 子文件夹，并以任意顺序返回剩下的文件夹。<br>我们这样定义「子文件夹」：<br>如果文件夹 folder[i] 位于另一个文件夹 folder[j] 下，那么 folder[i] 就是 folder[j] 的子文件夹。<br>文件夹的「路径」是由一个或多个按以下格式串联形成的字符串：<br>/ 后跟一个或者多个小写英文字母。<br>例如，/leetcode 和 /leetcode/problems 都是有效的路径，而空字符串和 / 不是。<br>示例：<br>输入：folder = [“/a”,”/a/b”,”/c/d”,”/c/d/e”,”/c/f”]<br>输出：[“/a”,”/c/d”,”/c/f”]<br>解释：”/a/b/“ 是 “/a” 的子文件夹，而 “/c/d/e” 是 “/c/d” 的子文件夹。</p>
+</blockquote>
+<pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> List&lt;String&gt; <span class="hljs-title">removeSubfolders</span><span class="hljs-params">(String[] folder)</span> </span>&#123;
+    <span class="hljs-comment">//先将字符串数组中的字符串按照长度升序排序</span>
+       Arrays.sort(folder, <span class="hljs-keyword">new</span> Comparator&lt;String&gt;() &#123;
+           <span class="hljs-meta">@Override</span>
+           <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">compare</span><span class="hljs-params">(String o1, String o2)</span> </span>&#123;
+               <span class="hljs-keyword">return</span> o1.length()-o2.length();
+           &#125;
+       &#125;);
+
+       <span class="hljs-comment">//Treeset是按照排序规则排过序的set，底层是用treemap实现</span>
+       <span class="hljs-comment">//第一次添加的节点为根节点，以后每次添加节点都会根据compare的值来插入</span>
+       <span class="hljs-comment">//如果值为0，则不会插入，值为-1，插入到右节点，值为1，插入到左节点</span>
+       Set&lt;String&gt; set=<span class="hljs-keyword">new</span> TreeSet&lt;String&gt;((s1, s2)-&gt;&#123;
+           <span class="hljs-keyword">if</span>(s1.contains(s2+<span class="hljs-string">"/"</span>))&#123;<span class="hljs-comment">//字符串判断是否包含另一字符串的方法</span>
+               <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+           &#125;
+           <span class="hljs-keyword">return</span> s1.compareTo(s2);
+       &#125;);
+       <span class="hljs-comment">//将字符串数组中的字符串添加到treeset中时，子文件夹不会加入</span>
+       Collections.addAll(set,folder);
+       <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> ArrayList&lt;&gt;(set);
+   &#125;</code></pre>
+
+
+
+
+
+
+            </article>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/leetcode/">leetcode</a>
+                    
+                      <a class="hover-with-bg" href="/categories/leetcode/string/">string</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/leetcode/">leetcode</a>
+                    
+                      <a class="hover-with-bg" href="/tags/string/">string</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" target="_blank" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <div class="post-prev col-6">
+                    
+                    
+                      <a href="/2020/05/29/springboot/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">springboot</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </div>
+                  <div class="post-next col-6">
+                    
+                    
+                      <a href="/2020/05/27/javaguide/">
+                        <span class="hidden-mobile">JavaGuide学习笔记</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </div>
+                </div>
+              
+            </div>
+
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
+  <div id="tocbot"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+  </main>
+
+  
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  
+
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <div>
+      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
+      <i class="iconfont icon-love"></i>
+      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
+        <span>Fluid</span></a>
+    </div>
+    
+
+    
+
+    
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/main.js" ></script>
+
+
+  <script  src="/js/lazyload.js" ></script>
+
+
+
+  
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
+
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: '.post-content',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 0,
+        scrollSmooth: true,
+        headingsOffset: -boardTop
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc').css('visibility', 'visible');
+      }
+    });
+  </script>
+
+
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
+
+
+
+
+
+
+<!-- Plugins -->
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "string&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "hover",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      searchFunc(path, 'local-search-input', 'local-search-result');
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <script>
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
+      function () {
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

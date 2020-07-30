@@ -119,7 +119,7 @@
 </nav>
 
     <div class="view intro-2" id="background" parallax=true
-         style="background: url('/img/default.png') no-repeat center center;
+         style="background: url('/img/kobe.jpg') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
@@ -143,7 +143,7 @@
                   
                   <span class="post-meta mr-2">
                     <i class="iconfont icon-chart"></i>
-                    1.8k 字
+                    3k 字
                   </span>
                 
 
@@ -153,7 +153,7 @@
                       <i class="iconfont icon-clock-fill"></i>
                     
                     
-                    30
+                    50
                      分钟
                   </span>
                 
@@ -210,12 +210,6 @@
         &lt;/dependency&gt;
 
         &lt;dependency&gt;
-            &lt;groupId&gt;org.slf4j&lt;/groupId&gt;
-            &lt;artifactId&gt;jcl-over-slf4j&lt;/artifactId&gt;
-            &lt;version&gt;1.7.25&lt;/version&gt;
-        &lt;/dependency&gt;
-
-        &lt;dependency&gt;
             &lt;groupId&gt;junit&lt;/groupId&gt;
             &lt;artifactId&gt;junit&lt;/artifactId&gt;
             &lt;version&gt;4.12&lt;/version&gt;
@@ -225,7 +219,7 @@
     &lt;/dependencies&gt;
 
 &lt;/project&gt;</code></pre></li>
-<li>在resources目录下新建一个<code>mybatis_config.xml</code>,这是mybatis的全局配置文件<pre><code class="hljs java">&lt;?xml version=<span class="hljs-string">"1.0"</span> encoding=<span class="hljs-string">"UTF-8"</span> ?&gt;
+<li>mybatis配置：在resources目录下新建一个<code>mybatis_config.xml</code>,这是mybatis的全局配置文件<pre><code class="hljs java">&lt;?xml version=<span class="hljs-string">"1.0"</span> encoding=<span class="hljs-string">"UTF-8"</span> ?&gt;
 &lt;!DOCTYPE configuration
         PUBLIC <span class="hljs-string">"-//mybatis.org//DTD Config 3.0//EN"</span>
         <span class="hljs-string">"http://mybatis.org/dtd/mybatis-3-config.dtd"</span>&gt;
@@ -264,6 +258,15 @@
         &lt;/environment&gt;
     &lt;/environments&gt;
 &lt;/configuration&gt;</code></pre></li>
+<li>你也可以不通过xml文件配置，直接通过java代码配置，mybatis提供了一个和xml有着相同配置选项的配置类Configuration类。<pre><code class="hljs java">DataSource dataSource = BlogDataSourceFactory.getBlogDataSource();
+TransactionFactory transactionFactory =
+  <span class="hljs-keyword">new</span> JdbcTransactionFactory();
+Environment environment =
+  <span class="hljs-keyword">new</span> Environment(<span class="hljs-string">"development"</span>, transactionFactory, dataSource);
+Configuration configuration = <span class="hljs-keyword">new</span> Configuration(environment);
+configuration.addMapper(BlogMapper<span class="hljs-class">.<span class="hljs-keyword">class</span>)</span>;
+SqlSessionFactory sqlSessionFactory =
+  <span class="hljs-keyword">new</span> SqlSessionFactoryBuilder().build(configuration);</code></pre></li>
 <li>新建tb_user对应的User类，这里注意要有空参构造器，mybatis通过反射生成User类实例</li>
 <li>在resources文件夹下新建一个mappers文件夹，里面存放映射配置文件，新建一个<code>mymapper.xml</code><pre><code class="hljs java">&lt;?xml version=<span class="hljs-string">"1.0"</span> encoding=<span class="hljs-string">"UTF-8"</span> ?&gt;
 &lt;!DOCTYPE mapper
@@ -315,7 +318,7 @@
         <span class="hljs-string">"http://mybatis.org/dtd/mybatis-3-mapper.dtd"</span>&gt;
 &lt;mapper namespace=<span class="hljs-string">"userdao"</span>&gt;
 
-&lt;!--    查询因为又结果集，要制定返回类型--&gt;
+&lt;!--    查询因为有结果集，要制定返回类型--&gt;
 &lt;!--    #&#123;id&#125;里面的名字任意，只要保证唯一--&gt;
     &lt;select id=<span class="hljs-string">"queryUserById"</span> resultType=<span class="hljs-string">"com.kaidow.mybatis.User"</span>&gt;
         select * from tb_user where id= #&#123;id&#125;
@@ -351,6 +354,7 @@
 &lt;!--    suffixoverride去除多余的后缀，也就是最后一个“，”--&gt;
     &lt;update id=<span class="hljs-string">"updateUser"</span> &gt;
         update tb_user
+        &lt;!-- 这里也可以用set标签 --!&gt;
         &lt;trim prefix=<span class="hljs-string">"set"</span> suffixOverrides=<span class="hljs-string">","</span>&gt;
 
             &lt;if test="username!=null"&gt;username=#&#123;username&#125;,&lt;/if&gt;
@@ -473,6 +477,155 @@
 <span class="hljs-function">    &lt;select id</span>=<span class="hljs-string">"multiConditionSelect"</span> parameterType=<span class="hljs-string">"map"</span> resultType=<span class="hljs-string">"com.kaidow.mybatis.User"</span>&gt;
         select * <span class="hljs-function">from tb_user where username like <span class="hljs-title">concat</span><span class="hljs-params">(<span class="hljs-string">'%'</span>,#&#123;name&#125;,<span class="hljs-string">'%'</span>)</span> and age&gt;#</span>&#123;age&#125;
     &lt;/select&gt;</code></pre>
+
+</li>
+</ul>
+<h2 id="4-一对多"><a href="#4-一对多" class="headerlink" title="4.一对多"></a>4.一对多</h2><p>我又新建了一个Product类和Category类，一个种类可以对应多个产品，这里感觉有点重复工作，早知道刚开始就用Category了，whatever了，反正也只是一个演示。数据库中新建<code>表category（id,name)</code>和<code>表product(id,name,price,cid)</code>。</p>
+<ul>
+<li>Category类中的属性<pre><code class="hljs java"><span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> id;
+<span class="hljs-keyword">private</span>  String name;
+<span class="hljs-keyword">private</span> List&lt;Product&gt; products;</code></pre></li>
+<li>Product类中的属性<pre><code class="hljs java"><span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> id;
+<span class="hljs-keyword">private</span> String name;
+<span class="hljs-keyword">private</span> <span class="hljs-keyword">float</span> price;
+<span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> cid;</code></pre></li>
+<li>新建映射文件category.xml<pre><code class="hljs java">&lt;mapper namespace=<span class="hljs-string">"category"</span>&gt;
+    &lt;!-- id唯一标识，type为映射的pojo对象--&gt;
+    &lt;resultMap id=<span class="hljs-string">"CategoryBean"</span> type=<span class="hljs-string">"com.kaidow.mybatis.pojo.Category"</span>&gt;
+&lt;!--        id column为表中主键字段，property为pojo中对应的属性名--&gt;
+        &lt;id column=<span class="hljs-string">"cid"</span> property=<span class="hljs-string">"id"</span>/&gt;
+        &lt;result column=<span class="hljs-string">"cname"</span> property=<span class="hljs-string">"name"</span>/&gt;
+
+        &lt;collection property=<span class="hljs-string">"products"</span> ofType=<span class="hljs-string">"com.kaidow.mybatis.pojo.Product"</span>&gt;
+            &lt;id column=<span class="hljs-string">"pid"</span> property=<span class="hljs-string">"id"</span>/&gt;
+            &lt;result column=<span class="hljs-string">"pname"</span> property=<span class="hljs-string">"name"</span>/&gt;
+            &lt;result column=<span class="hljs-string">"price"</span> property=<span class="hljs-string">"price"</span>/&gt;
+        &lt;/collection&gt;
+    &lt;/resultMap&gt;
+&lt;!--    表的列名要重新命名与上面的column一致，从而与pojo中的属性对应--&gt;
+    &lt;select id=<span class="hljs-string">"listCategory"</span> resultMap=<span class="hljs-string">"CategoryBean"</span>&gt;
+        select c.*,p.* ,c.id cid,c.name cname,p.id pid,p.name pname
+        from ssmdemo.category c left join product p on c.id = p.cid
+    &lt;/select&gt;
+&lt;/mapper&gt;</code></pre>
+
+</li>
+</ul>
+<h2 id="5-多对一"><a href="#5-多对一" class="headerlink" title="5.多对一"></a>5.多对一</h2><p>多个product可以对应一个category，那么product类中就要有一个category属性，从而可以根据每个product得到对应的category</p>
+<ul>
+<li>product类中添加category属性<pre><code class="hljs java"><span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> id;
+    <span class="hljs-keyword">private</span> String name;
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">float</span> price;
+    <span class="hljs-keyword">private</span> Category category;<span class="hljs-comment">//添加的category</span></code></pre></li>
+<li>新建product.xml,通过<code>product2category</code>的select标签配置sql语句，通过resultmap返回查询的结果集，进行字段与属性的对应<pre><code class="hljs java">&lt;resultMap id=<span class="hljs-string">"productBean"</span> type=<span class="hljs-string">"com.kaidow.mybatis.pojo.Product"</span>&gt;
+        &lt;id column=<span class="hljs-string">"pid"</span> property=<span class="hljs-string">"id"</span>/&gt;
+        &lt;result column=<span class="hljs-string">"pname"</span> property=<span class="hljs-string">"name"</span>/&gt;
+        &lt;result column=<span class="hljs-string">"price"</span> property=<span class="hljs-string">"price"</span>/&gt;
+        &lt;association property=<span class="hljs-string">"category"</span> javaType=<span class="hljs-string">"com.kaidow.mybatis.pojo.Category"</span>&gt;
+            &lt;id column=<span class="hljs-string">"cid"</span> property=<span class="hljs-string">"id"</span>/&gt;
+            &lt;result column=<span class="hljs-string">"cname"</span> property=<span class="hljs-string">"name"</span>/&gt;
+        &lt;/association&gt;
+    &lt;/resultMap&gt;
+
+    &lt;select id=<span class="hljs-string">"product2category"</span> resultMap=<span class="hljs-string">"productBean"</span>&gt;
+        select p.*,c.*,p.id pid,p.name pname,c.id cid,c.name cname
+        from product p left join category c on p.cid=c.id
+    &lt;/select&gt;</code></pre></li>
+<li>在mybatis_config.xml中添加映射<pre><code class="hljs java">&lt;mapper resource=<span class="hljs-string">"mappers/Product.xml"</span>/&gt;</code></pre>
+<h2 id="6-多对多"><a href="#6-多对多" class="headerlink" title="6.多对多"></a>6.多对多</h2>为了测试多对多，需要换一种情境。订单Order类，一个订单有多个订单项OrderItem，每一个订单项对应一种订单产品Product。因而，一个订单可以对应多个产品，一个产品也可以对应多个订单，也就是一个产品可以在多个订单中出现。</li>
+<li>创建表Order(id,code),表OrderItem(id,oid,pid,number):订单有订单号和订单代码，订单项有订单项号，订单号，产品号和产品数量,product表之前已经建好了<pre><code class="hljs sql"><span class="hljs-keyword">create</span> <span class="hljs-keyword">table</span> tb_order (
+  <span class="hljs-keyword">id</span> <span class="hljs-built_in">int</span>(<span class="hljs-number">11</span>) <span class="hljs-keyword">NOT</span> <span class="hljs-literal">NULL</span> AUTO_INCREMENT,
+  code <span class="hljs-built_in">varchar</span>(<span class="hljs-number">32</span>) <span class="hljs-keyword">DEFAULT</span> <span class="hljs-literal">NULL</span>,
+  PRIMARY <span class="hljs-keyword">KEY</span> (<span class="hljs-keyword">id</span>)
+) <span class="hljs-keyword">ENGINE</span>=MyISAM AUTO_INCREMENT=<span class="hljs-number">1</span> <span class="hljs-keyword">DEFAULT</span> <span class="hljs-keyword">CHARSET</span>=utf8;
+ 
+<span class="hljs-keyword">create</span> <span class="hljs-keyword">table</span> order_item_(
+  <span class="hljs-keyword">id</span> <span class="hljs-built_in">int</span>(<span class="hljs-number">11</span>) <span class="hljs-keyword">NOT</span> <span class="hljs-literal">NULL</span> AUTO_INCREMENT, 
+  <span class="hljs-keyword">oid</span> <span class="hljs-built_in">int</span> ,
+  pid <span class="hljs-built_in">int</span> ,
+  <span class="hljs-built_in">number</span> <span class="hljs-built_in">int</span> ,
+  PRIMARY <span class="hljs-keyword">KEY</span>(<span class="hljs-keyword">id</span>)
+)AUTO_INCREMENT=<span class="hljs-number">1</span> <span class="hljs-keyword">DEFAULT</span> <span class="hljs-keyword">CHARSET</span>=utf8;</code></pre></li>
+<li>插入一些数据用于测试<pre><code class="hljs sql"><span class="hljs-keyword">INSERT</span> <span class="hljs-keyword">INTO</span> order_ <span class="hljs-keyword">VALUES</span> (<span class="hljs-number">1</span>,<span class="hljs-string">'code000A'</span>);
+<span class="hljs-keyword">INSERT</span> <span class="hljs-keyword">INTO</span> order_ <span class="hljs-keyword">VALUES</span> (<span class="hljs-number">2</span>,<span class="hljs-string">'code000B'</span>);
+ 
+<span class="hljs-keyword">INSERT</span> <span class="hljs-keyword">INTO</span> order_item_ <span class="hljs-keyword">VALUES</span> (<span class="hljs-literal">null</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">100</span>);
+<span class="hljs-keyword">INSERT</span> <span class="hljs-keyword">INTO</span> order_item_ <span class="hljs-keyword">VALUES</span> (<span class="hljs-literal">null</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">100</span>);
+<span class="hljs-keyword">INSERT</span> <span class="hljs-keyword">INTO</span> order_item_ <span class="hljs-keyword">VALUES</span> (<span class="hljs-literal">null</span>, <span class="hljs-number">1</span>, <span class="hljs-number">3</span>, <span class="hljs-number">100</span>);
+<span class="hljs-keyword">INSERT</span> <span class="hljs-keyword">INTO</span> order_item_ <span class="hljs-keyword">VALUES</span> (<span class="hljs-literal">null</span>, <span class="hljs-number">2</span>, <span class="hljs-number">2</span>, <span class="hljs-number">100</span>);
+<span class="hljs-keyword">INSERT</span> <span class="hljs-keyword">INTO</span> order_item_ <span class="hljs-keyword">VALUES</span> (<span class="hljs-literal">null</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">100</span>);
+<span class="hljs-keyword">INSERT</span> <span class="hljs-keyword">INTO</span> order_item_ <span class="hljs-keyword">VALUES</span> (<span class="hljs-literal">null</span>, <span class="hljs-number">2</span>, <span class="hljs-number">4</span>, <span class="hljs-number">100</span>);</code></pre></li>
+<li>创建实体类Order和OrderItem，我只列出属性，setter和getter以及toString和空参构造函数自动生成<pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Order</span></span>&#123;
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> id;
+    <span class="hljs-keyword">private</span> String code;
+    <span class="hljs-keyword">private</span> List&lt;OrderItem&gt; orderItems;
+&#125;</code></pre>
+<pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">OrderItem</span></span>&#123;
+     <span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> id;
+    <span class="hljs-keyword">private</span> Product product;
+    <span class="hljs-keyword">private</span> Order order;
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> number;
+&#125;</code></pre></li>
+<li>xml文件的配置order.xml,orderitem.xml<pre><code class="hljs java">&lt;?xml version=<span class="hljs-string">"1.0"</span> encoding=<span class="hljs-string">"UTF-8"</span> ?&gt;
+&lt;!DOCTYPE mapper
+        PUBLIC <span class="hljs-string">"-//mybatis.org//DTD Mapper 3.0//EN"</span>
+        <span class="hljs-string">"http://mybatis.org/dtd/mybatis-3-mapper.dtd"</span>&gt;
+&lt;mapper namespace=<span class="hljs-string">"order"</span>&gt;
+    &lt;resultMap id=<span class="hljs-string">"orderBean"</span> type=<span class="hljs-string">"com.kaidow.mybatis.pojo.Order"</span>&gt;
+        &lt;id column=<span class="hljs-string">"orderid"</span> property=<span class="hljs-string">"id"</span>/&gt;
+        &lt;result column=<span class="hljs-string">"code"</span> property=<span class="hljs-string">"code"</span>/&gt;
+
+        &lt;collection property=<span class="hljs-string">"orderItems"</span> ofType=<span class="hljs-string">"com.kaidow.mybatis.pojo.OrderItem"</span>&gt;
+            &lt;id column=<span class="hljs-string">"itemid"</span> property=<span class="hljs-string">"id"</span>/&gt;
+            &lt;result column=<span class="hljs-string">"number"</span> property=<span class="hljs-string">"number"</span>/&gt;
+            &lt;association property=<span class="hljs-string">"product"</span> javaType=<span class="hljs-string">"com.kaidow.mybatis.pojo.Product"</span>&gt;
+                &lt;id column=<span class="hljs-string">"pid"</span> property=<span class="hljs-string">"id"</span>/&gt;
+                &lt;result column=<span class="hljs-string">"pname"</span> property=<span class="hljs-string">"name"</span>/&gt;
+                &lt;result column=<span class="hljs-string">"price"</span> property=<span class="hljs-string">"price"</span>/&gt;
+            &lt;/association&gt;
+        &lt;/collection&gt;
+    &lt;/resultMap&gt;
+    &lt;select id=<span class="hljs-string">"listOrder"</span> resultMap=<span class="hljs-string">"orderBean"</span>&gt;
+        select item.*,o.*,p.*, item.id itemid,o.id orderid,p.id pid,p.name pname
+        from order_item item left join tb_order o on item.oid=o.id
+        left join product p on item.pid=p.id
+    &lt;/select&gt;
+&lt;/mapper&gt;</code></pre>
+<pre><code class="hljs java">&lt;?xml version=<span class="hljs-string">"1.0"</span> encoding=<span class="hljs-string">"UTF-8"</span> ?&gt;
+&lt;!DOCTYPE mapper
+        PUBLIC <span class="hljs-string">"-//mybatis.org//DTD Mapper 3.0//EN"</span>
+        <span class="hljs-string">"http://mybatis.org/dtd/mybatis-3-mapper.dtd"</span>&gt;
+&lt;mapper namespace=<span class="hljs-string">"orderItem"</span>&gt;
+    &lt;insert id=<span class="hljs-string">"insertItem"</span> parameterType=<span class="hljs-string">"com.kaidow.mybatis.pojo.OrderItem"</span>&gt;
+        insert into order_item
+        values (null,#&#123;order.id&#125;,#&#123;product.id&#125;,#&#123;number&#125;)
+    &lt;/insert&gt;
+&lt;/mapper&gt;</code></pre></li>
+<li>mybatis_config.xml中添加mapper的映射<pre><code class="hljs java">&lt;mapper resource=<span class="hljs-string">"mappers/Order.xml"</span>/&gt;
+&lt;mapper resource=<span class="hljs-string">"mappers/OrderItem.xml"</span>/&gt;</code></pre>
+` 测试类<pre><code class="hljs java">String resource=<span class="hljs-string">"mybatis_config.xml"</span>;
+        InputStream is= Resources.getResourceAsStream(resource);
+        SqlSessionFactory sqlSessionFactory=<span class="hljs-keyword">new</span> SqlSessionFactoryBuilder().build(is);
+
+        <span class="hljs-keyword">try</span>(SqlSession sqlSession=sqlSessionFactory.openSession())&#123;
+            List&lt;Order&gt; orders=sqlSession.selectList(<span class="hljs-string">"order.listOrder"</span>);
+            <span class="hljs-keyword">for</span>(Order order:orders)&#123;
+                System.out.println(order);
+                List&lt;OrderItem&gt; items=order.getOrderItems();
+                <span class="hljs-keyword">for</span>(OrderItem orderItem: items )&#123;
+                    System.out.println(orderItem);
+                &#125;
+            &#125;</code></pre>
+
+
+
+
+
+
+
+
+
+
 </li>
 </ul>
 
